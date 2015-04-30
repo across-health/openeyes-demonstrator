@@ -1,0 +1,12 @@
+{
+  "name": "openeyes-demonstrator",
+  "description": "openeyes-demonstrator",
+  "version": "0.0.1",
+  "homepage": "https://github.com/davet1985/openeyes-demonstrator",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "foundation": "5.5.1"
+  }
+}

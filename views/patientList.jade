@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h2 Patients
+  .small-12.columns
+    .row
+      .patientCount
+        Found #{partyCount} patient(s)
+    each patient in parties
+      .row.patient(id='patient_#{patient.id}')
+        .small-1.columns(class='#{patient.gender}')
+        .small-2.columns.border-right
+          p
+            | #{patient.lastNames.toUpperCase()},
+            br
+            | #{patient.firstNames}
+        .small-3.columns.end
+          p
+            em Date of birth
+            br
+            | #{patient.dateOfBirth}
+        .small-2.columns.text-right
+          a(href='/patient/#{patient.id}') Episodes

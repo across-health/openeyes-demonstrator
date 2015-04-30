@@ -1,8 +1,30 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.patientCount {
+    padding-bottom: 5px;
+    font-style: italic;
 }
 
-a {
-  color: #00B7FF;
+.patient {
+    padding-bottom: 8px !important;
+    padding-top: 8px !important;
+    border-bottom: 1px solid lightgray;
+}
+
+.patient div {
+    height: 50px;
+}
+
+.border-right {
+    border-right: 1px solid lightgray;
+}
+
+.MALE {
+    width: 55px;
+    height: 55px;
+    background-color: lightblue;
+}
+
+.FEMALE {
+    width: 55px;
+    height: 55px;
+    background-color: lightpink;
 }

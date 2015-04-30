@@ -1,7 +1,19 @@
 doctype html
 html
   head
-    title= title
+    title OpenEyes demonstrator:
+      | #{title}
+    link(rel='stylesheet', href='/bower_components/foundation/css/normalize.css')
+    link(rel='stylesheet', href='/bower_components/foundation/css/foundation.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    script(src='/bower_components/jquery/dist/jquery.min.js', type='text/javascript')
+    script(src='/bower_components/foundation/js/vendor/modernizr.js', type='text/javascript')
   body
-    block content
+    nav.top-bar(data-topbar='', role='navigation')
+      ul.title-area
+        li.name
+          h1
+            a(href='/') ACROSS Health Limited OpenEyes demonstrator
+    .row.main
+      .small-12.columns
+        block content

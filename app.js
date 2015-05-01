@@ -22,6 +22,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/patient_app', express.static(path.join(__dirname, 'patient_app')));
 
 app.use('/', routes);
 app.use('/', patients);

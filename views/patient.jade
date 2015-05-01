@@ -1,9 +1,10 @@
 extends layout
 
 block content
-  div(ng-app='patientApp' )
+  div(ng-app='patientApp')
     h1 #{patient.lastNames.toUpperCase()},
-      | #{patient.firstNames}
+      | #{patient.firstNames} 
+      small #{patientUtils.formatDate(patient.dateOfBirth)}
     div(ng-view)
 block bottom_javascript
   script(src='/javascripts/patient_app.js', type='text/javascript')

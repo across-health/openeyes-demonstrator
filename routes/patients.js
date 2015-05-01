@@ -11,7 +11,7 @@ router.get('/patients', function(req, res, next) {
 router.get('/patient/:id', function(req, res, next) {
   var partyId = req.params.id
   var patient = patientUtils.findByProperty(parties, "id", partyId);
-  res.render('patient', { title: 'Patient details', patient: patient });
+  res.render('patient', { title: 'Patient details', patient: patient, patientUtils: patientUtils });
 });
 
 module.exports = router;

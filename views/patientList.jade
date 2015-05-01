@@ -18,6 +18,6 @@ block content
           p
             em Date of birth
             br
-            | #{patient.dateOfBirth}
+            | #{patientUtils.formatDate(patient.dateOfBirth)}
         .small-2.columns.text-right
           a(href='/patient/#{patient.id}') Episodes

@@ -1,8 +1,10 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
+var sass = require('gulp-sass');
+var watch = require('gulp-watch');
 
 gulp.task('default', function() {
-  gulp.start('combine-global', 'combine-angular-patient');
+  gulp.start('combine-global', 'combine-angular-patient', 'sass');
 });
 
 gulp.task('combine-angular-patient', function() {
@@ -17,7 +19,26 @@ gulp.task('combine-angular-patient', function() {
 });
 
 gulp.task('combine-global', function() {
-  return gulp.src(['./bower_components/jquery/dist/jquery.min.js', './bower_components/foundation/js/vendor/modernizr.js'])
+  return gulp.src([
+      './bower_components/jquery/dist/jquery.min.js',
+      './bower_components/foundation/js/vendor/modernizr.js'
+    ])
     .pipe(concat('script.js'))
     .pipe(gulp.dest('./public/javascripts'));
+});
+
+gulp.task('sass', function () {
+  gulp.src([
+      './bower_components/foundation/scss/normalize.scss',
+      './bower_components/foundation/scss/foundation.scss',
+      './stylesheets/style.scss'
+    ])
+    .pipe(sass())
+    .pipe(concat('style.css'))
+    .pipe(gulp.dest('./public/stylesheets'));
+});
+
+gulp.task('watch', function() {
+  gulp.watch('./stylesheets/*.scss', ['sass']);
+  gulp.watch('./patient_app/*/*.js', ['combine-angular-patient']);
 });

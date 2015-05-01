@@ -11,24 +11,24 @@
   padding-bottom: 8px !important;
   padding-top: 8px !important;
   border-bottom: 1px solid lightgray;
-}
 
-.patient div {
-  height: 50px;
+  div {
+    height: 50px;
+  }
+
+  .MALE {
+    width: 55px;
+    height: 55px;
+    background-color: lightblue;
+  }
+
+  .FEMALE {
+    width: 55px;
+    height: 55px;
+    background-color: lightpink;
+  }
 }
 
 .border-right {
   border-right: 1px solid lightgray;
-}
-
-.MALE {
-  width: 55px;
-  height: 55px;
-  background-color: lightblue;
-}
-
-.FEMALE {
-  width: 55px;
-  height: 55px;
-  background-color: lightpink;
 }

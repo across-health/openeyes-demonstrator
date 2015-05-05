@@ -1,1 +1,43 @@
-partial
+<div class="row">
+  <div class="small-5 columns">
+    <h4>Personal details</h4>
+    <div class="panel">
+      <div class="row">
+        <div class="small-3 columns">
+          Address:
+        </div>
+        <div class="small-9 columns">
+          {{patient.address.address}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="small-7 columns">
+    <h4>Episodes</h4>
+    <accordion close-others="true">
+      <accordion-group ng-repeat="(key, episode) in episodeList" is-open="episode.endDate == ''">
+        <accordion-heading>
+          <div class="row">
+            <div class="small-12 columns">
+              <strong>{{episode.subSpecialty}}:</strong> {{episode.startDate | date:'MMM dd, yyyy'}} -
+              <span ng-show="episode.endDate != ''">{{episode.endDate | date:'MMM dd, yyyy'}}</span>
+              <span ng-show="episode.endDate == ''"><em>outstanding</em></span>
+            </div>
+          </div>
+        </accordion-heading>
+        <div class="row">
+          <div class="small-6 columns">
+            <p>
+              <span class="static-label">Eye: </span>{{episode.eye}}
+              <br/>
+              <span class="static-label">Diagnosis: </span>{{episode.diagnosis}}
+            </p>
+          </div>
+          <div class="small-6 columns text-right">
+            <a href="#/episode/{{episode.id}}">View details</a>
+          </div>
+        </div>
+      </accordion-group>
+    </accordion>
+  </div>
+</div>

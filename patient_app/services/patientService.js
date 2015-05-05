@@ -5,7 +5,17 @@ angular.module('patientApp.patientService', [])
 .service('patientService', function() {
 
   return {
+    patient: {},
+
     episodes: [],
+
+    storePatient: function(patient) {
+      this.patient = patient;
+    },
+
+    getPatient: function() {
+      return this.patient;
+    },
 
     storeEpisodes: function(episodes) {
       this.episodes = episodes;

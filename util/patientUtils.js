@@ -11,10 +11,7 @@ patientUtils = {
   },
 
   formatDate: function(date) {
-    var now = new Date();
-    // Basic usage
-    console.log(dateFormat(date, "mmmm dS, yyyy"));
-    return dateFormat(date, "mmmm dS, yyyy");
+    return dateFormat(date, "mmmm d, yyyy");
   }
 
 };

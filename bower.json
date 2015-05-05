@@ -9,6 +9,7 @@
     "jquery": "~2.1.4",
     "foundation": "5.5.1",
     "angular": "1.2.x",
-    "angular-route": "1.2.x"
+    "angular-route": "1.2.x",
+    "angular-foundation": "~0.6.0"
   }
 }

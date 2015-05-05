@@ -2,9 +2,10 @@ var gulp = require('gulp');
 var concat = require('gulp-concat');
 var sass = require('gulp-sass');
 var watch = require('gulp-watch');
+var copy = require('gulp-copy');
 
 gulp.task('default', function() {
-  gulp.start('combine-global', 'combine-angular-patient', 'sass');
+  gulp.start('combine-global', 'combine-angular-patient', 'eyedraw', 'sass');
 });
 
 gulp.task('combine-angular-patient', function() {
@@ -30,6 +31,25 @@ gulp.task('combine-global', function() {
     .pipe(concat('script.js'))
     .pipe(gulp.dest('./public/javascripts'));
 });
+
+gulp.task('eyedraw', function() {
+  gulp.start('eyedraw-css', 'eyedraw-script');
+});
+
+gulp.task('eyedraw-css', function() {
+  gulp.src([
+    './eyedraw/assets/css/oe-eyedraw.css'
+  ])
+  .pipe(gulp.dest('./public/stylesheets'));
+});
+
+gulp.task('eyedraw-script', function(){
+  // the base option sets the relative root for the set of files,
+  // preserving the folder structure
+  gulp.src(['./eyedraw/assets/img/**/*'], { base: './eyedraw' })
+    .pipe(gulp.dest('./public/eyedraw'));
+});
+
 
 gulp.task('sass', function () {
   gulp.src([

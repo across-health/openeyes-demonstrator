@@ -1,0 +1,3 @@
+[submodule "eyedraw"]
+	path = eyedraw
+	url = https://github.com/openeyes/eyedraw

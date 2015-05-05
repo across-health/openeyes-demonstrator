@@ -55,6 +55,7 @@ angular.module('patientApp.patient', ['ngRoute'])
 //}])
 
 .controller('EpisodeCtrl', ['$scope', '$routeParams', '$http', '$location', 'patientService', function($scope, $routeParams, $http, $location, patientService) {
+
   if (patientService.getEpisodes().length == 0) {
     var patientId = $location.absUrl().match('[0-9]+#')[0].replace('#', '');
     //TODO: Abstract this out to a service / factory
@@ -69,4 +70,48 @@ angular.module('patientApp.patient', ['ngRoute'])
   } else {
     $scope.episode = patientService.getEpisodeById($routeParams.id);
   }
+  $scope.event = patientService.getEvent();
+  console.log($scope.event);
+  if ($scope.event == undefined) {
+    console.log('get event');
+    $http.get('/api/patient/' + patientId + '/episode/' + $routeParams.id + '/event/1')
+      .success(function (data) {
+        patientService.storeEvent(data);
+        $scope.event = data;
+      })
+      .error(function (data) {
+      });
+  } else {
+    console.log('dont get event');
+    $scope.event = patientService.getEvent();
+  }
+
+  $scope.removeLeftEntry = function(entryId) {
+    console.log('remove entry + '+entryId);
+    var event = patientService.getEvent();
+    event.visualAcuity.left.splice(entryId, 1);
+    patientService.storeEvent(event);
+  }
+
+  $scope.removeRightEntry = function(entryId) {
+    console.log('remove entry + '+entryId);
+    var event = patientService.getEvent();
+    event.visualAcuity.right.splice(entryId, 1);
+    patientService.storeEvent(event);
+  }
+
+  $scope.addLeftEntry = function() {
+    var event = patientService.getEvent();
+    var newId = event.visualAcuity.left.length;
+    event.visualAcuity.left.push({"id": newId, "value": "", "method": ""});
+    patientService.storeEvent(event);
+  }
+
+    $scope.addRightEntry = function() {
+      var event = patientService.getEvent();
+      var newId = event.visualAcuity.right.length;
+      event.visualAcuity.right.push({"id": newId, "value": "", "method": ""});
+      patientService.storeEvent(event);
+    }
+
 }]);

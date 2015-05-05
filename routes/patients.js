@@ -4,8 +4,6 @@ var router = express.Router();
 var partiesResponse = require('../data/parties.json');
 var parties = partiesResponse.parties;
 
-var episodes = require('../data/episodes.json');
-
 router.get('/patients', function(req, res) {
   res.render('patientList', { title: 'Patient list', partyCount: parties.length, parties: parties });
 });

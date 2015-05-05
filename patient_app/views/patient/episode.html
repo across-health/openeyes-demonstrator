@@ -16,7 +16,7 @@
 </div>
 <div class="row">
   <div class="small-3 columns">
-    <h4>Event list</h4>
+    <h4 class="section-header">Event list</h4>
     <div class="row episode-event" ng-repeat="event in episode.events">
       <div class="small-5 columns">
         <span class="label">{{event.type}}</span>
@@ -27,6 +27,119 @@
     </div>
   </div>
   <div class="small-9 columns">
-    <h4>Event details</h4>
+    <h4 class="section-header">Event details</h4>
+    <h5>Examination</h5>
+    <div class="examination-section">Visual Acuity</div>
+    <div class="row">
+      <div class="small-6 columns">
+        <div class="panel radius">
+          <div class="row" ng-repeat="(key, entry) in event.visualAcuity.left">
+            <div class="small-3 columns">
+              <select ng-model="entry.value">
+                <option value="">--</option>
+                <option value="6/3">6/3</option>
+                <option value="6/4">6/4</option>
+                <option value="6/5">6/5</option>
+                <option value="6/6">6/6</option>
+                <option value="6/9">6/9</option>
+                <option value="6/12">6/12</option>
+                <option value="6/18">6/18</option>
+                <option value="6/24">6/24</option>
+                <option value="6/36">6/36</option>
+                <option value="6/60">6/60</option>
+                <option value="6/96">6/96</option>
+                <option value="3/60">3/60</option>
+                <option value="2/60">2/60</option>
+                <option value="1/60">1/60</option>
+                <option value="CF">CF</option>
+                <option value="HM" >HM</option>
+                <option value="PL" >PL</option>
+                <option value="NPL" >NPL</option>
+              </select>
+            </div>
+            <div class="small-7 columns">
+              <select ng-model="entry.method">
+                <option value="">--</option>
+                <option value="Unaided">Unaided</option>
+                <option value="Glasses">Glasses</option>
+                <option value="Contact lens">Contact lens</option>
+                <option value="Pinhole">Pinhole</option>
+                <option value="Auto-refraction">Auto-refraction</option>
+                <option value="Formal refraction">Formal refraction</option>
+              </select>
+            </div>
+            <div class="small-2 columns">
+              <a href="" ng-click="removeLeftEntry(key)">Remove</a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-12 columns">
+              <button ng-click="addLeftEntry()">Add</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-12 columns">
+              <textarea name="left_comments" id="left_comments" cols="30" rows="3">{{event.visualAcuity.leftComments}}</textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="small-6 columns">
+        <div class="panel radius">
+          <div class="row" ng-repeat="(key, entry) in event.visualAcuity.right">
+            <div class="small-3 columns">
+              <select ng-model="entry.value">
+                <option value="">--</option>
+                <option value="6/3">6/3</option>
+                <option value="6/4">6/4</option>
+                <option value="6/5">6/5</option>
+                <option value="6/6">6/6</option>
+                <option value="6/9">6/9</option>
+                <option value="6/12">6/12</option>
+                <option value="6/18">6/18</option>
+                <option value="6/24">6/24</option>
+                <option value="6/36">6/36</option>
+                <option value="6/60">6/60</option>
+                <option value="6/96">6/96</option>
+                <option value="3/60">3/60</option>
+                <option value="2/60">2/60</option>
+                <option value="1/60">1/60</option>
+                <option value="CF">CF</option>
+                <option value="HM" >HM</option>
+                <option value="PL" >PL</option>
+                <option value="NPL" >NPL</option>
+              </select>
+            </div>
+            <div class="small-7 columns">
+              <select ng-model="entry.method">
+                <option value="">--</option>
+                <option value="Unaided">Unaided</option>
+                <option value="Glasses">Glasses</option>
+                <option value="Contact lens">Contact lens</option>
+                <option value="Pinhole">Pinhole</option>
+                <option value="Auto-refraction">Auto-refraction</option>
+                <option value="Formal refraction">Formal refraction</option>
+              </select>
+            </div>
+            <div class="small-2 columns">
+              <a href="" ng-click="removeRightEntry(key)">Remove</a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-12 columns">
+              <button ng-click="addRightEntry()">Add</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-12 columns">
+              <textarea name="left_comments" id="right_comments" cols="30" rows="3">{{event.visualAcuity.rightComments}}</textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="examination-section">Anterior Segment</div>
+
   </div>
 </div>

@@ -60,27 +60,15 @@ angular.module('patientApp.patient', ['ngRoute'])
     $scope.event = patientService.getEvent();
   }
 
-  $scope.removeLeftEntry = function(entryId) {
+  $scope.removeEntry = function(eye, entryId) {
     var event = patientService.getEvent();
-    event.visualAcuity.left.splice(entryId, 1);
+    event.visualAcuity[eye].splice(entryId, 1);
     patientService.storeEvent(event);
-  };
+  }
 
-  $scope.removeRightEntry = function(entryId) {
+  $scope.addEntry = function(eye) {
     var event = patientService.getEvent();
-    event.visualAcuity.right.splice(entryId, 1);
-    patientService.storeEvent(event);
-  };
-
-  $scope.addLeftEntry = function() {
-    var event = patientService.getEvent();
-    event.visualAcuity.left.push({"value": "", "method": ""});
-    patientService.storeEvent(event);
-  };
-
-  $scope.addRightEntry = function() {
-    var event = patientService.getEvent();
-    event.visualAcuity.right.push({"value": "", "method": ""});
+    event.visualAcuity[eye].push({"value": "", "method": ""});
     patientService.storeEvent(event);
   };
 

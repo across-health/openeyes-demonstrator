@@ -33,7 +33,7 @@ gulp.task('combine-global', function() {
 });
 
 gulp.task('eyedraw', function() {
-  gulp.start('eyedraw-css', 'eyedraw-script');
+  gulp.start('eyedraw-css', 'eyedraw-script', 'eyedraw-images');
 });
 
 gulp.task('eyedraw-css', function() {
@@ -43,13 +43,19 @@ gulp.task('eyedraw-css', function() {
   .pipe(gulp.dest('./public/stylesheets'));
 });
 
-gulp.task('eyedraw-script', function(){
+gulp.task('eyedraw-images', function(){
   // the base option sets the relative root for the set of files,
   // preserving the folder structure
   gulp.src(['./eyedraw/assets/img/**/*'], { base: './eyedraw' })
     .pipe(gulp.dest('./public/eyedraw'));
 });
 
+gulp.task('eyedraw-script', function(){
+  // the base option sets the relative root for the set of files,
+  // preserving the folder structure
+  gulp.src(['./eyedraw/assets/js/dist/eyedraw.min.js'])
+    .pipe(gulp.dest('./public/javascripts'));
+});
 
 gulp.task('sass', function () {
   gulp.src([

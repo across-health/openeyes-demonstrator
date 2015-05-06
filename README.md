@@ -49,6 +49,10 @@ Also to watch and compile assets you should also have a terminal open running `g
 
 ## Install submodules
 
+To ensure the submodules are installed, run: -
+
+```git submodule init```
+
 ## Folder structure
 
 `/data` - sample JSON data that could come from a back-end service

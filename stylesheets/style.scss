@@ -3,7 +3,7 @@
 }
 
 .row {
-  max-width: 85rem;
+  max-width: 86rem;
 }
 
 .patientCount {
@@ -61,4 +61,13 @@ h4 {
   font-size: 90%;
   font-style: italic;
   margin-bottom: 10px;
+}
+
+.ed-doodle-popup {
+  width: auto;
+  position: relative;
+  border-width: 1px;
+  select, input {
+    margin-bottom: 7px;
+  }
 }

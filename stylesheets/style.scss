@@ -77,3 +77,13 @@ h4 {
   color: blue !important;
   margin-bottom: 5px;
 }
+
+.toolbar {
+  margin-bottom: 5px;
+  .ed-button {
+    display: inline;
+  }
+  &.last {
+    margin-bottom: 10px;
+  }
+}

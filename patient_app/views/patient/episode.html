@@ -144,46 +144,61 @@
       <div class="small-6 columns">
         <div class="panel">
           <script type="text/javascript">
+var drawingEdit;
+// Runs on page load
+function init()
+{
+  // Create a drawing linked to the canvas
+  drawingEdit = new ED.Drawing(document.getElementById('canvasEdit'), ED.eye.Left, 'RPS', true, {graphicsPath:'/eyedraw/assets/img/'});
+  // Create a controller object for this drawing
+  var controller = new eyeDrawController(drawingEdit);
+  // Initialise drawing
+  drawingEdit.init();
+}
 
-            // Runs on page load
-            function init()
-            {
-              // Create a drawing linked to the canvas
-              var drawingEdit = new ED.Drawing(document.getElementById('canvasEdit'), ED.eye.Left, 'RPS', true, {graphicsPath:'/eyedraw/assets/img/'});
+// Controller class
+function eyeDrawController(_drawing)
+{
+  // Specify call back function
+  this.callBack = callBack;
+  // Register controller for notifications
+  _drawing.registerForNotifications(this, 'callBack', []);
+  // Show doodle controls
+  _drawing.showDoodleControls = true;
+  // Method called for notification
+  function callBack(_messageArray)
+  {
+    switch (_messageArray['eventName'])
+    {
+      // Ready notification
+      case 'ready':
+        _drawing.addDoodle('AntSeg');
+        _drawing.deselectDoodles();
+        addToReport();
+        break;
+      case 'mouseup':
+        //console.log('mouseUp');
+        addToReport();
+        break;
+      case 'setParameterWithAnimationComplete':
+        //console.log('setParameterWithAnimationComplete');
+        addToReport();
+        break;
+    }
+  }
+}
 
-              // Create a controller object for this drawing
-              var controller = new eyeDrawController(drawingEdit);
-
-              // Initialise drawing
-              drawingEdit.init();
-            }
-
-            // Controller class
-            function eyeDrawController(_drawing)
-            {
-              // Specify call back function
-              this.callBack = callBack;
-
-              // Register controller for notifications
-              _drawing.registerForNotifications(this, 'callBack', ['ready']);
-
-              // Show doodle controls
-              _drawing.showDoodleControls = true;
-
-              // Method called for notification
-              function callBack(_messageArray)
-              {
-                switch (_messageArray['eventName'])
-                {
-                  // Ready notification
-                  case 'ready':
-                    _drawing.addDoodle('AntSeg');
-                    _drawing.deselectDoodles();
-                    break;
-                }
-              }
-            }
-
+function addToReport()
+{
+  // Get text from the applet and force into string type
+  var text = drawingEdit.report();
+  // Use a RegEx to remove final comma and space
+  text = text.replace(/, +$/, '');
+  // Get reference to report textarea
+  var repText = document.getElementById('report');
+  // Add to existing text in text area
+  repText.innerHTML = text;
+}
           </script>
           <script type="text/javascript">
 init();
@@ -228,51 +243,85 @@ init();
               </div>
             </div>
           </div>
+          <div class="row">
+            <div class="small-12 columns">
+              <strong>Description</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-12 columns">
+              <p class="report" id="report"></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-12 columns">
+              <strong>Comments</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-12 columns">
+              <textarea name="leftEyeComments" id="leftEyeComments" cols="30" rows="3"></textarea>
+            </div>
+          </div>
         </div>
       </div>
       <div class="small-6 columns">
         <div class="panel">
-
           <script type="text/javascript">
+var drawingEdit2;
+function init2()
+{
+  // Create a drawing linked to the canvas
+  drawingEdit2 = new ED.Drawing(document.getElementById('canvasEdit2'), ED.eye.Right, 'RPS', true, {graphicsPath:'/eyedraw/assets/img/'});
+  // Create a controller object for this drawing
+  var controller = new eyeDrawController2(drawingEdit2);
+  // Initialise drawing
+  drawingEdit2.init();
+}
 
-            // Runs on page load
-            function init2()
-            {
-              // Create a drawing linked to the canvas
-              var drawingEdit = new ED.Drawing(document.getElementById('canvasEdit2'), ED.eye.Right, 'RPS', true, {graphicsPath:'/eyedraw/assets/img/'});
+// Controller class
+function eyeDrawController2(_drawing)
+{
+  // Specify call back function
+  this.callBack = callBack;
+  // Register controller for notifications
+  _drawing.registerForNotifications(this, 'callBack', []);
+  // Show doodle controls
+  _drawing.showDoodleControls = true;
+  // Method called for notification
+  function callBack(_messageArray)
+  {
+    switch (_messageArray['eventName'])
+    {
+      // Ready notification
+      case 'ready':
+        _drawing.addDoodle('AntSeg');
+        _drawing.deselectDoodles();
+        addToReport2();
+        break;
+      case 'mouseup':
+        //console.log('mouseUp');
+        addToReport2();
+        break;
+      case 'setParameterWithAnimationComplete':
+        //console.log('setParameterWithAnimationComplete');
+        addToReport2();
+        break;
+    }
+  }
+}
 
-              // Create a controller object for this drawing
-              var controller = new eyeDrawController(drawingEdit);
-
-              // Initialise drawing
-              drawingEdit.init();
-            }
-
-            // Controller class
-            function eyeDrawController(_drawing)
-            {
-              // Specify call back function
-              this.callBack = callBack;
-
-              // Register controller for notifications
-              _drawing.registerForNotifications(this, 'callBack', ['ready']);
-
-              // Show doodle controls
-              _drawing.showDoodleControls = true;
-
-              // Method called for notification
-              function callBack(_messageArray)
-              {
-                switch (_messageArray['eventName'])
-                {
-                  // Ready notification
-                  case 'ready':
-                    _drawing.addDoodle('AntSeg');
-                    _drawing.deselectDoodles();
-                    break;
-                }
-              }
-            }
+function addToReport2()
+{
+  // Get text from the applet and force into string type
+  var text = drawingEdit2.report();
+  // Use a RegEx to remove final comma and space
+  text = text.replace(/, +$/, '');
+  // Get reference to report textarea
+  var repText = document.getElementById('report2');
+  // Add to existing text in text area
+  repText.innerHTML = text;
+}
           </script>
           <script type="text/javascript">
             init2();
@@ -315,6 +364,26 @@ init();
                   <input type="checkbox" id="canvasEdit2_ectropion_control"/>
                 </div>
               </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-12 columns">
+              <strong>Description</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-12 columns">
+              <p class="report" id="report2"></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-12 columns">
+              <strong>Comments</strong>
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-12 columns">
+              <textarea name="rightEyeComments" id="rightEyeComments" cols="30" rows="3"></textarea>
             </div>
           </div>
         </div>

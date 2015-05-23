@@ -62,7 +62,7 @@ To ensure the submodules are installed, run: -
 
 You might want to install nodemon and run using `nodemon bin/www` - this will watch for file changes and automatically restart the server for you.
 
-Also to watch and compile assets you should also have a terminal open running `gulp watch`
+To watch and compile assets you should also have a terminal open running `gulp watch`. This project is also configured to use LiveReload to automatically refresh your browser when stylesheets are changed. This is best used with the [LiveReload extension for Chrome](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei).
 
 ## Folder structure
 

@@ -10,8 +10,10 @@ curl -sL https://deb.nodesource.com/setup_iojs_1.x | sudo bash -
 apt-get install -y iojs
 
 # Install io.js global packages
+npm install -g npm
 npm install -g gulp
 npm install -g bower
+npm install -g nodemon
 
 # Download and build sassc and libsass
 apt-get install -y g++

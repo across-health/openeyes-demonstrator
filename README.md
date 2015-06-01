@@ -18,6 +18,19 @@ This demonstrator is built and deployed by Travis CI to Heroku, the resulting de
 
 ## Development
 
+The easiest way to get the openeyes-demonstrator running is with Vagrant.
+Simply run the following commands:
+```sh
+vagrant up
+vagrant ssh
+cd /vagrant
+npm start
+```
+
+Then point your browser to http://localhost:3090 - if you want to use vagrant but don't have it installed, download it [here](https://docs.vagrantup.com/v2/installation/) and use it with with [VirtualBox](https://www.virtualbox.org/).
+
+### Or...
+
 To run locally for development ensure you have the following installed.
 
 * node.js, or more specifically, we are using iojs v1.8.1
@@ -41,17 +54,15 @@ npm install -g bower
 
 From here you should be able to run `npm start` and it will download all the necessary node modules, bower components and gulp will do it's thing and the server should be running on http://localhost:3000.
 
-For development you might want to install nodemon and run using `nodemon bin/www`
-
-This will watch for file changes and automatically restart the server for you.
-
-Also to watch and compile assets you should also have a terminal open running `gulp watch`
-
-## Install submodules
-
 To ensure the submodules are installed, run: -
 
 ```git submodule init```
+
+## Development Options
+
+You might want to install nodemon and run using `nodemon bin/www` - this will watch for file changes and automatically restart the server for you.
+
+To watch and compile assets you should also have a terminal open running `gulp watch`. This project is also configured to use LiveReload to automatically refresh your browser when stylesheets are changed. This is best used with the [LiveReload extension for Chrome](https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei).
 
 ## Folder structure
 

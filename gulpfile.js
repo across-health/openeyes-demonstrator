@@ -3,6 +3,7 @@ var concat = require('gulp-concat');
 var sass = require('gulp-sass');
 var watch = require('gulp-watch');
 var copy = require('gulp-copy');
+var livereload = require('gulp-livereload');
 
 gulp.task('default', function() {
   gulp.start('combine-global', 'combine-angular-patient', 'eyedraw', 'sass');
@@ -65,10 +66,12 @@ gulp.task('sass', function () {
     ])
     .pipe(sass())
     .pipe(concat('style.css'))
-    .pipe(gulp.dest('./public/stylesheets'));
+    .pipe(gulp.dest('./public/stylesheets'))
+    .pipe(livereload());
 });
 
 gulp.task('watch', function() {
+  livereload.listen();
   gulp.watch('./stylesheets/*.scss', ['sass']);
   gulp.watch(['./patient_app/*.js', './patient_app/*/*.js'], ['combine-angular-patient']);
 });

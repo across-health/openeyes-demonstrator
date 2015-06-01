@@ -1,10 +1,9 @@
 language: node_js
-
 node_js:
-  - "iojs-v1.8.1"
-
+- iojs-v1.8.1
 deploy:
   provider: heroku
-  api_key: "6a670ba1-e6ca-4130-b593-6b1b8af1804f"
+  api_key:
+    secure: DHYaJSs/hqRsB5jYMpivrv6QcjdVvx0gC0Rr1/idr6sL/J7DlrTnqUpjlKaAYXsNeADre0UkDj5Y7BdpF9VD52ttC84cnL8xWQ4dU6ijnTikwvuIEM8SmeQdihy0p9v9h4u+oixV2Zv+wSC61KIGytWpNzAA+j2fJO5GXFIF00c=
   app: across-openeyes-demonstrator
   skip_cleanup: true

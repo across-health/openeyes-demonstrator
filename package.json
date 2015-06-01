@@ -25,6 +25,7 @@
     "serve-favicon": "~2.2.0"
   },
   "devDependencies": {
+    "gulp-livereload": "^3.8.0",
     "gulp-watch": "^4.2.4"
   }
 }

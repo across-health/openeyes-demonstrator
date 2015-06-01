@@ -5,3 +5,5 @@ bower_components
 public/javascripts
 public/stylesheets
 public/eyedraw
+
+.vagrant

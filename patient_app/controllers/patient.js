@@ -14,17 +14,16 @@ angular.module('patientApp.patient', ['ngRoute'])
     });
 }])
 
-.controller('PatientCtrl', ['$scope', '$http', '$location', 'patientService', function($scope, $http, $location, patientService) {
+.controller('PatientCtrl', ['$scope', '$location', 'patientService', 'dataService', function($scope, $location, patientService, dataService) {
   var patientId = $location.absUrl().match('[0-9]+#')[0].replace('#', '');
-  //TODO: Abstract this out to a service / factory
-  $http.get('/api/patient/'+patientId+'/episodes')
+  dataService.getEpisodes(patientId)
     .success(function(data) {
       $scope.episodeList = data.episodes;
       patientService.storeEpisodes(data.episodes);
     })
     .error(function(data) {
     });
-  $http.get('/api/patient/'+patientId)
+  dataService.getPatient(patientId)
     .success(function(data) {
       $scope.patient = data;
       patientService.storePatient(data);
@@ -33,11 +32,10 @@ angular.module('patientApp.patient', ['ngRoute'])
     });
 }])
 
-.controller('EpisodeCtrl', ['$scope', '$routeParams', '$http', '$location', 'patientService', function($scope, $routeParams, $http, $location, patientService) {
+.controller('EpisodeCtrl', ['$scope', '$routeParams', '$location', 'patientService', 'dataService', function($scope, $routeParams, $location, patientService, dataService) {
   if (patientService.getEpisodes().length == 0) {
     var patientId = $location.absUrl().match('[0-9]+#')[0].replace('#', '');
-    //TODO: Abstract this out to a service / factory
-    $http.get('/api/patient/'+patientId+'/episodes')
+    dataService.getEpisodes(patientId)
       .success(function(data) {
         patientService.storeEpisodes(data.episodes);
         $scope.episode = patientService.getEpisodeById($routeParams.id);
@@ -49,7 +47,7 @@ angular.module('patientApp.patient', ['ngRoute'])
   }
   $scope.event = patientService.getEvent();
   if ($scope.event == undefined) {
-    $http.get('/api/patient/' + patientId + '/episode/' + $routeParams.id + '/event/1')
+    dataService.getEvent(patientId, $routeParams.id)
       .success(function (data) {
         patientService.storeEvent(data);
         $scope.event = data;
@@ -64,7 +62,7 @@ angular.module('patientApp.patient', ['ngRoute'])
     var event = patientService.getEvent();
     event.visualAcuity[eye].splice(entryId, 1);
     patientService.storeEvent(event);
-  }
+  };
 
   $scope.addEntry = function(eye) {
     var event = patientService.getEvent();

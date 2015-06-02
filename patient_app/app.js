@@ -5,6 +5,7 @@ angular.module('patientApp', [
   'ngRoute',
   'patientApp.patient',
   'patientApp.patientService',
+  'patientApp.dataService',
   'mm.foundation'
 ])
 

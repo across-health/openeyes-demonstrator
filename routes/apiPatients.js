@@ -5,10 +5,9 @@ var partiesResponse = require('../data/parties.json');
 var parties = partiesResponse.parties;
 
 var episodes = require('../data/episodes.json');
-var event = require('../data/event.json');
+var events = [require('../data/event1.json'), require('../data/event2.json'), require('../data/event3.json')];
 
 router.get('/patient/:id/episodes', function(req, res) {
-  console.log('getting episodes for patient id = ' + req.params.id);
   res.json(episodes);
 });
 
@@ -19,7 +18,9 @@ router.get('/patient/:id', function(req, res) {
 });
 
 router.get('/patient/:patientId/episode/:episodeId/event/:eventId', function(req, res) {
-  res.json(event);
+  console.log(req.params);
+
+  res.json(events[req.params.eventId-1]);
 });
 
 module.exports = router;

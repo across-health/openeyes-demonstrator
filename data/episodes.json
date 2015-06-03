@@ -31,30 +31,22 @@
       "diagnosis": "Toxic cataract",
       "events": [
         {
+          "id": 1,
+          "workflowStageId": 1,
           "eventDate": "2015-04-16T00:00:00.000Z",
           "type": "Operation booking"
         },
         {
+          "id": 2,
+          "workflowStageId": 1,
           "eventDate": "2015-04-17T00:00:00.000Z",
           "type": "Consent form"
         },
         {
+          "id": 3,
+          "workflowStageId": 3,
           "eventDate": "2015-04-23T00:00:00.000Z",
-          "type": "Examination",
-          "visualAcuity": {
-            "left": [
-              {
-                "value": "6/3",
-                "method": "Unaided"
-              },
-              {
-                "value": "6/12",
-                "method": "Pinhole"
-              }
-            ],
-            "right": [
-            ]
-          }
+          "type": "Examination"
         }
       ]
     }

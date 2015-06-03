@@ -1,0 +1,22 @@
+{
+  "id": 3,
+  "eventDate": "2015-04-23T00:00:00.000Z",
+  "type": "Examination",
+  "visualAcuity": {
+    "left": [
+      {
+        "value": "6/3",
+        "method": "Unaided"
+      },
+      {
+        "value": "6/12",
+        "method": "Pinhole"
+      }
+    ],
+    "leftComments": "Extra comments box...",
+    "rightComments": "",
+    "right": [
+    ]
+  },
+  "eyedraw": true
+}

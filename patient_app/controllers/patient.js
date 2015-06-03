@@ -33,29 +33,49 @@ angular.module('patientApp.patient', ['ngRoute'])
 }])
 
 .controller('EpisodeCtrl', ['$scope', '$routeParams', '$location', 'patientService', 'dataService', function($scope, $routeParams, $location, patientService, dataService) {
+
+  var episodeId = $routeParams.id;
   if (patientService.getEpisodes().length == 0) {
     var patientId = $location.absUrl().match('[0-9]+#')[0].replace('#', '');
     dataService.getEpisodes(patientId)
       .success(function(data) {
         patientService.storeEpisodes(data.episodes);
-        $scope.episode = patientService.getEpisodeById($routeParams.id);
+        $scope.episode = patientService.getEpisodeById(episodeId);
       })
       .error(function(data) {
       });
   } else {
-    $scope.episode = patientService.getEpisodeById($routeParams.id);
+    $scope.episode = patientService.getEpisodeById(episodeId);
   }
-  $scope.event = patientService.getEvent();
+
+  $scope.event = patientService.getEvent(3);
   if ($scope.event == undefined) {
-    dataService.getEvent(patientId, $routeParams.id)
+    dataService.getEvent(patientId, episodeId, 3)
       .success(function (data) {
         patientService.storeEvent(data);
         $scope.event = data;
+        $scope.episode.events[2].selected = true;
       })
       .error(function (data) {
       });
   } else {
     $scope.event = patientService.getEvent();
+  }
+
+  $scope.selectEvent = function(eventId) {
+    console.log('selecting event id = ' + eventId);
+    $scope.event = patientService.getEvent(eventId);
+    if ($scope.event == undefined) {
+      dataService.getEvent(patientId, episodeId, eventId)
+        .success(function (data) {
+          patientService.storeEvent(data);
+          $scope.event = data;
+        })
+        .error(function (data) {
+        });
+    } else {
+      $scope.event = patientService.getEvent(eventId);
+    }
   }
 
   $scope.removeEntry = function(eye, entryId) {

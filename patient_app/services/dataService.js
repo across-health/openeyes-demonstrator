@@ -13,9 +13,9 @@ angular.module('patientApp.dataService', [])
       console.log('getEpisodes');
       return $http.get('/api/patient/'+patientId+'/episodes');
     },
-    getEvent: function(patientId, episodeId) {
-      console.log('getEvent');
-      return $http.get('/api/patient/' + patientId + '/episode/' + episodeId + '/event/1');
+    getEvent: function(patientId, episodeId, eventId) {
+      console.log('dataService.getEvent: ' + patientId + '/' + episodeId + '/' + eventId);
+      return $http.get('/api/patient/' + patientId + '/episode/' + episodeId + '/event/' + eventId);
     }
   };
 

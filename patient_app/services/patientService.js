@@ -9,7 +9,7 @@ angular.module('patientApp.patientService', [])
 
     episodes: [],
 
-    event: undefined,
+    events: {},
 
     storePatient: function(patient) {
       this.patient = patient;
@@ -36,11 +36,15 @@ angular.module('patientApp.patientService', [])
     },
 
     storeEvent: function(event) {
-      this.event = event;
+      this.events[event.id] = event;
+      console.log('patientService.storeEvent: ' + event.id);
+      console.log(this.events);
     },
 
-    getEvent: function() {
-      return this.event;
+    getEvent: function(eventId) {
+      console.log('patientService.getEvent: ' +  eventId);
+      console.log(this.events);
+      return this.events[eventId];
     }
   };
 

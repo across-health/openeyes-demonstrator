@@ -9,8 +9,6 @@ angular.module('patientApp.patientService', [])
 
     episodes: [],
 
-    events: {},
-
     storePatient: function(patient) {
       this.patient = patient;
     },
@@ -33,18 +31,6 @@ angular.module('patientApp.patientService', [])
           return this.episodes[i];
         }
       }
-    },
-
-    storeEvent: function(event) {
-      this.events[event.id] = event;
-      console.log('patientService.storeEvent: ' + event.id);
-      console.log(this.events);
-    },
-
-    getEvent: function(eventId) {
-      console.log('patientService.getEvent: ' +  eventId);
-      console.log(this.events);
-      return this.events[eventId];
     }
   };
 

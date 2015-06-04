@@ -57,8 +57,8 @@
       </div>
 
       <!-- events -->
-      <div ng-repeat="event in episode.workflowData[stage.id].events">
-        <div class="row selectable-event" ng-class="episode.workflowData.selectedEventId == event.id ? 'selected-event' : ''" ng-click="selectEvent(event.id)">
+      <div ng-repeat="(eventId, event) in episode.workflowData[stage.id].events">
+        <div class="row selectable-event" ng-class="episode.workflowData.selectedEventId == eventId ? 'selected-event' : ''" ng-click="selectEvent(stage.id, eventId)">
           <div class="small-3 columns">
             <div class="square"></div>
           </div>
@@ -74,24 +74,16 @@
             <div class="connector x-short"></div>
           </div>
         </div>
-      </div>
       <!-- end events -->
-
-    </div>
+      </div>
     <!-- end stages -->
-    
-    <h4 class="section-header">Event list</h4>
-    <div class="row episode-event" ng-repeat="event in episode.events">
-      <div class="small-5 columns">
-        <span class="label">{{event.type}}</span>
-      </div>
-      <div class="small-5 columns end">
-        <span class="small-text">{{event.eventDate | date:'MMM dd, yyyy'}}</span>
-      </div>
     </div>
   </div>
   <div class="small-9 columns">
-    <h4 class="section-header">{{event.type}} ({{event.eventDate | date:'MMM dd, yyyy'}})</h4>
+    <h4 class="section-header">
+      {{event.type}}
+      <span class="right">{{event.eventDate | date:'MMM dd, yyyy'}}</span>
+    </h4>
     <div class="examination-section">Visual Acuity</div>
     <div class="row">
       <div class="small-6 columns">

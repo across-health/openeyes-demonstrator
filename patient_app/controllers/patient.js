@@ -41,22 +41,7 @@ angular.module('patientApp.patient', ['ngRoute'])
       .success(function(data) {
         patientService.storeEpisodes(data.episodes);
         $scope.episode = patientService.getEpisodeById(episodeId);
-
-        // get event
-        var eventId = $scope.episode.workflowData.selectedEventId;
-        $scope.event = patientService.getEvent(eventId);
-        if ($scope.event == undefined) {
-          dataService.getEvent(patientId, episodeId, eventId)
-            .success(function (data) {
-              patientService.storeEvent(data);
-              $scope.event = data;
-            })
-            .error(function (data) {
-            });
-        } else {
-          $scope.event = patientService.getEvent();
-        }
-        
+        $scope.selectEvent($scope.episode.workflowData.selectedStageId, $scope.episode.workflowData.selectedEventId);
       })
       .error(function(data) {
       });
@@ -64,33 +49,23 @@ angular.module('patientApp.patient', ['ngRoute'])
     $scope.episode = patientService.getEpisodeById(episodeId);
   }
 
-  $scope.selectEvent = function(eventId) {
-    console.log('selecting event id = ' + eventId);
-    $scope.event = patientService.getEvent(eventId);
-    if ($scope.event == undefined) {
-      dataService.getEvent(patientId, episodeId, eventId)
-        .success(function (data) {
-          patientService.storeEvent(data);
-          $scope.event = data;
-        })
-        .error(function (data) {
-        });
-    } else {
-      $scope.event = patientService.getEvent(eventId);
-    }
+  $scope.selectEvent = function(stageId, eventId) {
+    console.log('selecting event = ' + stageId + '/' + eventId);
+    $scope.episode.workflowData.selectedStageId = stageId;
     $scope.episode.workflowData.selectedEventId = eventId;
+    $scope.event = $scope.episode.workflowData[stageId].events[eventId];
   }
 
   $scope.removeEntry = function(eye, entryId) {
-    var event = patientService.getEvent();
-    event.visualAcuity[eye].splice(entryId, 1);
-    patientService.storeEvent(event);
+    var stageId = $scope.episode.workflowData.selectedStageId;
+    var eventId = $scope.episode.workflowData.selectedEventId;
+    $scope.episode.workflowData[stageId].events[eventId].visualAcuity[eye].splice(entryId, 1);
   };
 
   $scope.addEntry = function(eye) {
-    var event = patientService.getEvent();
-    event.visualAcuity[eye].push({"value": "", "method": ""});
-    patientService.storeEvent(event);
+    var stageId = $scope.episode.workflowData.selectedStageId;
+    var eventId = $scope.episode.workflowData.selectedEventId;
+    $scope.episode.workflowData[stageId].events[eventId].visualAcuity[eye].push({"value": "", "method": ""});
   };
 
 }]);

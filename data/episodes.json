@@ -15,117 +15,236 @@
       "subSpecialty": "Cataract",
       "eye": "Both",
       "diagnosis": "Toxic cataract",
+
       "workflow": {
         "stage_list": [
-            {
-                "id": "stage1",
-                "name": "Start",
-                "description": "This is the initial stage."
-            },
-            {
-                "id": "stage2",
-                "name": "Consultation",
-                "description": "Patient is consulted."
-            },
-            {
-                "id": "stage3",
-                "name": "Listing",
-                "description": "Patient is listed."
-            },
-            {
-                "id": "stage4",
-                "name": "Consent",
-                "description": "Patient is consented."
-            },
-            {
-                "id": "stage5",
-                "name": "Biometry measurement",
-                "description": "Patient is measured."
-            },
-            {
-                "id": "stage6",
-                "name": "Surgery",
-                "description": "Patient is surgeried."
-            },
-            {
-                "id": "stage7",
-                "name": "Follow up",
-                "description": "Patient is followed up."
-            },
-            {
-                "id": "stage8",
-                "name": "Discharge",
-                "description": "Patient is discharged."
-            },
-            {
-                "id": "stage9",
-                "name": "End",
-                "description": "This is the final stage."
-            }
+          {
+            "id": "stage446354",
+            "name": "Start",
+            "description": "This is the initial stage.",
+            "status": "OK",
+            "epTargetTopCenterUUID": "epTargetTopCenter-stage446354",
+            "epTargetBottomCenterUUID": "epTargetBottomCenter-stage446354",
+            "epTargetLeftMiddleUUID": "epTargetLeftMiddle-stage446354",
+            "epTargetRightMiddleUUID": "epTargetRightMiddle-stage446354",
+            "epSourceTopCenterUUID": "epSourceTopCenter-stage446354",
+            "epSourceBottomCenterUUID": "epSourceBottomCenter-stage446354",
+            "epSourceLeftMiddleUUID": "epSourceLeftMiddle-stage446354",
+            "epSourceRightMiddleUUID": "epSourceRightMiddle-stage446354",
+            "posX": 20,
+            "posY": 20
+          },
+          {
+            "id": "stage766857",
+            "name": "Consultation",
+            "description": "Patient is referred to hospital.",
+            "status": "OK",
+            "epTargetTopCenterUUID": "epTargetTopCenter-stage766857",
+            "epTargetBottomCenterUUID": "epTargetBottomCenter-stage766857",
+            "epTargetLeftMiddleUUID": "epTargetLeftMiddle-stage766857",
+            "epTargetRightMiddleUUID": "epTargetRightMiddle-stage766857",
+            "epSourceTopCenterUUID": "epSourceTopCenter-stage766857",
+            "epSourceBottomCenterUUID": "epSourceBottomCenter-stage766857",
+            "epSourceLeftMiddleUUID": "epSourceLeftMiddle-stage766857",
+            "epSourceRightMiddleUUID": "epSourceRightMiddle-stage766857",
+            "posX": 20,
+            "posY": 180
+          },
+          {
+            "id": "stage350827",
+            "name": "End",
+            "description": "This is the final stage.",
+            "status": "OK",
+            "epTargetTopCenterUUID": "epTargetTopCenter-stage350827",
+            "epTargetBottomCenterUUID": "epTargetBottomCenter-stage350827",
+            "epTargetLeftMiddleUUID": "epTargetLeftMiddle-stage350827",
+            "epTargetRightMiddleUUID": "epTargetRightMiddle-stage350827",
+            "epSourceTopCenterUUID": "epSourceTopCenter-stage350827",
+            "epSourceBottomCenterUUID": "epSourceBottomCenter-stage350827",
+            "epSourceLeftMiddleUUID": "epSourceLeftMiddle-stage350827",
+            "epSourceRightMiddleUUID": "epSourceRightMiddle-stage350827",
+            "posX": 640,
+            "posY": 360
+          },
+          {
+            "id": "stage402170",
+            "name": "Listing",
+            "description": "listing",
+            "status": "OK",
+            "epTargetTopCenterUUID": "epTargetTopCenter-stage402170",
+            "epTargetBottomCenterUUID": "epTargetBottomCenter-stage402170",
+            "epTargetLeftMiddleUUID": "epTargetLeftMiddle-stage402170",
+            "epTargetRightMiddleUUID": "epTargetRightMiddle-stage402170",
+            "epSourceTopCenterUUID": "epSourceTopCenter-stage402170",
+            "epSourceBottomCenterUUID": "epSourceBottomCenter-stage402170",
+            "epSourceLeftMiddleUUID": "epSourceLeftMiddle-stage402170",
+            "epSourceRightMiddleUUID": "epSourceRightMiddle-stage402170",
+            "posX": 20,
+            "posY": 360
+          },
+          {
+            "id": "stage219996",
+            "name": "Consent",
+            "description": "consent",
+            "status": "OK",
+            "epTargetTopCenterUUID": "epTargetTopCenter-stage219996",
+            "epTargetBottomCenterUUID": "epTargetBottomCenter-stage219996",
+            "epTargetLeftMiddleUUID": "epTargetLeftMiddle-stage219996",
+            "epTargetRightMiddleUUID": "epTargetRightMiddle-stage219996",
+            "epSourceTopCenterUUID": "epSourceTopCenter-stage219996",
+            "epSourceBottomCenterUUID": "epSourceBottomCenter-stage219996",
+            "epSourceLeftMiddleUUID": "epSourceLeftMiddle-stage219996",
+            "epSourceRightMiddleUUID": "epSourceRightMiddle-stage219996",
+            "posX": 340,
+            "posY": 20
+          },
+          {
+            "id": "stage527901",
+            "name": "Biometry measurement",
+            "description": "",
+            "status": "OK",
+            "epTargetTopCenterUUID": "epTargetTopCenter-stage527901",
+            "epTargetBottomCenterUUID": "epTargetBottomCenter-stage527901",
+            "epTargetLeftMiddleUUID": "epTargetLeftMiddle-stage527901",
+            "epTargetRightMiddleUUID": "epTargetRightMiddle-stage527901",
+            "epSourceTopCenterUUID": "epSourceTopCenter-stage527901",
+            "epSourceBottomCenterUUID": "epSourceBottomCenter-stage527901",
+            "epSourceLeftMiddleUUID": "epSourceLeftMiddle-stage527901",
+            "epSourceRightMiddleUUID": "epSourceRightMiddle-stage527901",
+            "posX": 340,
+            "posY": 180
+          },
+          {
+            "id": "stage972515",
+            "name": "Surgery",
+            "description": "",
+            "status": "OK",
+            "epTargetTopCenterUUID": "epTargetTopCenter-stage972515",
+            "epTargetBottomCenterUUID": "epTargetBottomCenter-stage972515",
+            "epTargetLeftMiddleUUID": "epTargetLeftMiddle-stage972515",
+            "epTargetRightMiddleUUID": "epTargetRightMiddle-stage972515",
+            "epSourceTopCenterUUID": "epSourceTopCenter-stage972515",
+            "epSourceBottomCenterUUID": "epSourceBottomCenter-stage972515",
+            "epSourceLeftMiddleUUID": "epSourceLeftMiddle-stage972515",
+            "epSourceRightMiddleUUID": "epSourceRightMiddle-stage972515",
+            "posX": 340,
+            "posY": 360
+          },
+          {
+            "id": "stage386249",
+            "name": "Follow up",
+            "description": "",
+            "status": "OK",
+            "epTargetTopCenterUUID": "epTargetTopCenter-stage386249",
+            "epTargetBottomCenterUUID": "epTargetBottomCenter-stage386249",
+            "epTargetLeftMiddleUUID": "epTargetLeftMiddle-stage386249",
+            "epTargetRightMiddleUUID": "epTargetRightMiddle-stage386249",
+            "epSourceTopCenterUUID": "epSourceTopCenter-stage386249",
+            "epSourceBottomCenterUUID": "epSourceBottomCenter-stage386249",
+            "epSourceLeftMiddleUUID": "epSourceLeftMiddle-stage386249",
+            "epSourceRightMiddleUUID": "epSourceRightMiddle-stage386249",
+            "posX": 640,
+            "posY": 20
+          },
+          {
+            "id": "stage278018",
+            "name": "Discharge",
+            "description": "",
+            "status": "OK",
+            "epTargetTopCenterUUID": "epTargetTopCenter-stage278018",
+            "epTargetBottomCenterUUID": "epTargetBottomCenter-stage278018",
+            "epTargetLeftMiddleUUID": "epTargetLeftMiddle-stage278018",
+            "epTargetRightMiddleUUID": "epTargetRightMiddle-stage278018",
+            "epSourceTopCenterUUID": "epSourceTopCenter-stage278018",
+            "epSourceBottomCenterUUID": "epSourceBottomCenter-stage278018",
+            "epSourceLeftMiddleUUID": "epSourceLeftMiddle-stage278018",
+            "epSourceRightMiddleUUID": "epSourceRightMiddle-stage278018",
+            "posX": 640,
+            "posY": 180
+          }
         ],
         "transition_list": [
-            {
-                "id": "con_1",
-                "name": "Begin",
-                "description": "This transition always fires automatically.",
-                "sourceStageId": "stage1",
-                "targetStageId": "stage2"
-            },
-            {
-                "id": "con_2",
-                "name": "con_2",
-                "description": "con_2",
-                "sourceStageId": "stage2",
-                "targetStageId": "stage3"
-            },
-            {
-                "id": "con_3",
-                "name": "con_3",
-                "description": "con_3",
-                "sourceStageId": "stage3",
-                "targetStageId": "stage4"
-            },
-            {
-                "id": "con_4",
-                "name": "con_4",
-                "description": "con_4",
-                "sourceStageId": "stage4",
-                "targetStageId": "stage5"
-            },
-            {
-                "id": "con_5",
-                "name": "con_5",
-                "description": "con_5",
-                "sourceStageId": "stage5",
-                "targetStageId": "stage6"
-            },
-            {
-                "id": "con_6",
-                "name": "con_6",
-                "description": "con_6",
-                "sourceStageId": "stage6",
-                "targetStageId": "stage7"
-            },
-            {
-                "id": "con_7",
-                "name": "con_7",
-                "description": "con_7",
-                "sourceStageId": "stage7",
-                "targetStageId": "stage8"
-            },
-            {
-                "id": "con_8",
-                "name": "con_8",
-                "description": "con_8",
-                "sourceStageId": "stage8",
-                "targetStageId": "stage9"
-            }
+          {
+            "id": "con_65",
+            "name": "Begin",
+            "description": "This transition always fires automatically.",
+            "sourceStageId": "stage446354",
+            "targetStageId": "stage766857",
+            "sourceEndpoint": "epSourceBottomCenter-stage446354",
+            "targetEndpoint": "epTargetTopCenter-stage766857",
+            "reassignmentType": "current_user",
+            "reassignmentGroup": "",
+            "reassignmentUser": ""
+          },
+          {
+            "id": "con_67",
+            "name": "Consultation complete",
+            "description": "This patient requires a consultation, send them to a doctor.",
+            "sourceStageId": "stage766857",
+            "targetStageId": "stage402170",
+            "sourceEndpoint": "epSourceBottomCenter-stage766857",
+            "targetEndpoint": "epTargetTopCenter-stage402170"
+          },
+          {
+            "id": "con_203",
+            "name": "Listing complete",
+            "description": "",
+            "sourceStageId": "stage402170",
+            "targetStageId": "stage219996",
+            "sourceEndpoint": "epSourceRightMiddle-stage402170",
+            "targetEndpoint": "epTargetLeftMiddle-stage219996"
+          },
+          {
+            "id": "con_211",
+            "name": "Consent complete",
+            "description": "",
+            "sourceStageId": "stage219996",
+            "targetStageId": "stage527901",
+            "sourceEndpoint": "epSourceBottomCenter-stage219996",
+            "targetEndpoint": "epTargetTopCenter-stage527901"
+          },
+          {
+            "id": "con_147",
+            "name": "Measurement complete",
+            "description": "",
+            "sourceStageId": "stage527901",
+            "targetStageId": "stage972515",
+            "sourceEndpoint": "epSourceBottomCenter-stage527901",
+            "targetEndpoint": "epTargetTopCenter-stage972515"
+          },
+          {
+            "id": "con_219",
+            "name": "Surgery complete",
+            "description": "",
+            "sourceStageId": "stage972515",
+            "targetStageId": "stage386249",
+            "sourceEndpoint": "epSourceRightMiddle-stage972515",
+            "targetEndpoint": "epTargetLeftMiddle-stage386249"
+          },
+          {
+            "id": "con_227",
+            "name": "Follow up complete",
+            "description": "",
+            "sourceStageId": "stage386249",
+            "targetStageId": "stage278018",
+            "sourceEndpoint": "epSourceBottomCenter-stage386249",
+            "targetEndpoint": "epTargetTopCenter-stage278018"
+          },
+          {
+            "id": "con_235",
+            "name": "Discharge complete",
+            "description": "",
+            "sourceStageId": "stage278018",
+            "targetStageId": "stage350827",
+            "sourceEndpoint": "epSourceBottomCenter-stage278018",
+            "targetEndpoint": "epTargetTopCenter-stage350827"
+          }
         ]
       },
       "workflowData": {
-        "selectedStageId": "stage5",
+        "selectedStageId": "stage527901",
         "selectedEventId": "event3",
-        "stage2": {
+        "stage766857": {
           "status": "complete",
           "date": "2015-04-16T00:00:00.000Z",
           "events": {
@@ -162,15 +281,15 @@
             }
           }
         },
-        "stage3": {
+        "stage402170": {
           "status": "complete",
           "date": "2015-04-19T00:00:00.000Z"
         },
-        "stage4": {
+        "stage219996": {
           "status": "complete",
           "date": "2015-04-19T00:00:00.000Z"
         },
-        "stage5": {
+        "stage527901": {
           "status": "in-progress",
           "date": "2015-04-20T00:00:00.000Z",
           "events": {
@@ -198,15 +317,15 @@
             }
           }
         },
-        "stage6": {
+        "stage972515": {
           "status": "not-started",
           "date": ""
         },
-        "stage7": {
+        "stage386249": {
           "status": "not-started",
           "date": ""
         },
-        "stage8": {
+        "stage278018": {
           "status": "not-started",
           "date": ""
         }

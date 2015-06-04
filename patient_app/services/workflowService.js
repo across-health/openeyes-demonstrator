@@ -12,7 +12,6 @@ angular.module('patientApp.workflowService', [])
       var transitions = episode.workflow.transition_list;
       var workflowData = episode.workflowData;
       for (var i=0; i<transitions.length; i++) {
-        console.log(transitions[i].sourceStageId + ' -> ' + transitions[i].targetStageId);
         if (i === 0) {
           var stage = new Stage(this.findStage(stages, transitions[i].sourceStageId));
           processedStageList.push(stage);
@@ -25,7 +24,6 @@ angular.module('patientApp.workflowService', [])
         }
         processedStageList.push(stage);
       }
-      console.log(processedStageList);
       return processedStageList;
     },
 

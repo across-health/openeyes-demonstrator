@@ -1,9 +1,0 @@
-{
-  "id": 1,
-  "eventDate": "2015-04-17T00:00:00.000Z",
-  "type": "Operation booking",
-  "details": {
-    "date": "2015-04-23T00:00:00.000Z",
-    "duration": "2 hours"
-  }
-}

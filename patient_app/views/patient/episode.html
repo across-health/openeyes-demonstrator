@@ -18,46 +18,46 @@
   <div class="small-3 columns workflow">
 
     <!-- stages -->
-    <div ng-repeat="stage in episode.workflow.stage_list">
+    <div ng-repeat="stage in stageList">
 
-      <div class="row" ng-show="stage.name == 'Start'">
+      <div class="row" ng-show="stage.isStart()">
         <div class="small-12 columns">
           <div class="wf-start"></div>
         </div>
       </div>
 
-      <div class="row" ng-show="stage.name == 'End'">
+      <div class="row" ng-show="stage.isEnd()">
         <div class="small-12 columns">
           <div class="wf-end not-started"></div>
         </div>
       </div>
 
-      <div class="row" ng-show="stage.name != 'Start' && stage.name != 'End'">
+      <div class="row" ng-show="stage.isMain()">
         <div class="small-3 columns">
-          <div class="circle" ng-class="episode.workflowData[stage.id].status"><span ng-show="episode.workflowData[stage.id].status == 'complete'">&#10004;</span></div>
+          <div class="circle" ng-class="stage.status"><span ng-show="stage.isComplete()">&#10004;</span></div>
         </div>
         <div class="small-5 columns">
-          <span ng-class="episode.workflowData[stage.id].status">{{stage.name}}</span>
+          <span ng-class="stage.status">{{stage.name}}</span>
         </div>
         <div class="small-4 columns">
-          <span class="small-text">{{episode.workflowData[stage.id].date | date:'MMM dd, yyyy'}}</span>
+          <span class="small-text">{{stage.date | date:'MMM dd, yyyy'}}</span>
         </div>
       </div>
 
-      <div class="row" ng-show="stage.name != 'End' && stage.name != 'Start'">
+      <div class="row" ng-show="stage.isMain()">
         <div class="small-12 columns">
-          <div class="connector" ng-class="episode.workflowData[stage.id].status == 'complete' ? 'short' : 'not-started'"></div>
+          <div class="connector" ng-class="stage.getFollowingConnectorClass()"></div>
         </div>
       </div>
 
-      <div class="row" ng-show="stage.name == 'Start'">
+      <div class="row" ng-show="stage.isStart()">
         <div class="small-12 columns">
           <div class="connector short"></div>
         </div>
       </div>
 
       <!-- events -->
-      <div ng-repeat="(eventId, event) in episode.workflowData[stage.id].events">
+      <div ng-repeat="(eventId, event) in stage.events">
         <div class="row selectable-event" ng-class="episode.workflowData.selectedEventId == eventId ? 'selected-event' : ''" ng-click="selectEvent(stage.id, eventId)">
           <div class="small-3 columns">
             <div class="square"></div>

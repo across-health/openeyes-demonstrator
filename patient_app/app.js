@@ -6,6 +6,7 @@ angular.module('patientApp', [
   'patientApp.patient',
   'patientApp.patientService',
   'patientApp.dataService',
+  'patientApp.workflowService',
   'mm.foundation'
 ])
 

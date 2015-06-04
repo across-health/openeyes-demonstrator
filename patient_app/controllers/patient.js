@@ -32,7 +32,7 @@ angular.module('patientApp.patient', ['ngRoute'])
     });
 }])
 
-.controller('EpisodeCtrl', ['$scope', '$routeParams', '$location', 'patientService', 'dataService', function($scope, $routeParams, $location, patientService, dataService) {
+.controller('EpisodeCtrl', ['$scope', '$routeParams', '$location', 'patientService', 'dataService', 'workflowService', function($scope, $routeParams, $location, patientService, dataService, workflowService) {
   // get episode
   var episodeId = $routeParams.id;
   if (patientService.getEpisodes().length == 0) {
@@ -41,6 +41,7 @@ angular.module('patientApp.patient', ['ngRoute'])
       .success(function(data) {
         patientService.storeEpisodes(data.episodes);
         $scope.episode = patientService.getEpisodeById(episodeId);
+        $scope.stageList = workflowService.processWorkflow($scope.episode);
         $scope.selectEvent($scope.episode.workflowData.selectedStageId, $scope.episode.workflowData.selectedEventId);
       })
       .error(function(data) {

@@ -15,6 +15,7 @@ gulp.task('combine-angular-patient', function() {
       './bower_components/angular-route/angular-route.min.js',
       './bower_components/angular-foundation/mm-foundation-tpls.min.js',
       './patient_app/app.js',
+      './patient_app/models/*.js',
       './patient_app/controllers/*.js',
       './patient_app/services/*.js'
     ])

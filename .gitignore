@@ -7,3 +7,5 @@ public/stylesheets
 public/eyedraw
 
 .vagrant
+
+.nodemon-find-ref

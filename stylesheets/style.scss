@@ -107,7 +107,7 @@ h4 {
       background-color: lightgreen;
     }
 
-    &.past, &.future {
+    &.past, &.not-started {
       border-width: 4px;
       width: 40px;
       height: 40px;
@@ -115,9 +115,13 @@ h4 {
     }
 
     &.complete {
+      border-width: 4px;
+      width: 40px;
+      height: 40px;
       text-align: center;
       font-size: 22px;
       color: lightgreen;
+      margin-left: 10px;
     }
   }
 
@@ -151,7 +155,7 @@ h4 {
     cursor: pointer;
   }
 
-  .future {
+  .not-started {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
     filter: alpha(opacity=30);
     opacity: 0.3;

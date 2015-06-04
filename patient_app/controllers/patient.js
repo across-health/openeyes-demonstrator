@@ -47,7 +47,6 @@ angular.module('patientApp.patient', ['ngRoute'])
   } else {
     $scope.episode = patientService.getEpisodeById(episodeId);
   }
-
   $scope.event = patientService.getEvent(3);
   if ($scope.event == undefined) {
     dataService.getEvent(patientId, episodeId, 3)
@@ -76,6 +75,7 @@ angular.module('patientApp.patient', ['ngRoute'])
     } else {
       $scope.event = patientService.getEvent(eventId);
     }
+    $scope.episode.workflowData.selectedEventId = eventId;
   }
 
   $scope.removeEntry = function(eye, entryId) {

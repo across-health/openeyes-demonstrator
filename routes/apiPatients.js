@@ -18,8 +18,6 @@ router.get('/patient/:id', function(req, res) {
 });
 
 router.get('/patient/:patientId/episode/:episodeId/event/:eventId', function(req, res) {
-  console.log(req.params);
-
   res.json(events[req.params.eventId-1]);
 });
 

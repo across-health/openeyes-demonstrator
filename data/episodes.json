@@ -48,7 +48,204 @@
           "eventDate": "2015-04-23T00:00:00.000Z",
           "type": "Examination"
         }
-      ]
+      ],
+
+      "workflow": {
+        "stage_list": [
+            {
+                "id": "stage1",
+                "name": "Start",
+                "description": "This is the initial stage."
+            },
+            {
+                "id": "stage2",
+                "name": "Consultation",
+                "description": "Patient is consulted."
+            },
+            {
+                "id": "stage3",
+                "name": "Listing",
+                "description": "Patient is listed."
+            },
+            {
+                "id": "stage4",
+                "name": "Consent",
+                "description": "Patient is consented."
+            },
+            {
+                "id": "stage5",
+                "name": "Biometry measurement",
+                "description": "Patient is measured."
+            },
+            {
+                "id": "stage6",
+                "name": "Surgery",
+                "description": "Patient is surgeried."
+            },
+            {
+                "id": "stage7",
+                "name": "Follow up",
+                "description": "Patient is followed up."
+            },
+            {
+                "id": "stage8",
+                "name": "Discharge",
+                "description": "Patient is discharged."
+            },
+            {
+                "id": "stage9",
+                "name": "End",
+                "description": "This is the final stage."
+            }
+        ],
+        "transition_list": [
+            {
+                "id": "con_1",
+                "name": "Begin",
+                "description": "This transition always fires automatically.",
+                "sourceStageId": "stage1",
+                "targetStageId": "stage2"
+            },
+            {
+                "id": "con_2",
+                "name": "con_2",
+                "description": "con_2",
+                "sourceStageId": "stage2",
+                "targetStageId": "stage3"
+            },
+            {
+                "id": "con_3",
+                "name": "con_3",
+                "description": "con_3",
+                "sourceStageId": "stage3",
+                "targetStageId": "stage4"
+            },
+            {
+                "id": "con_4",
+                "name": "con_4",
+                "description": "con_4",
+                "sourceStageId": "stage4",
+                "targetStageId": "stage5"
+            },
+            {
+                "id": "con_5",
+                "name": "con_5",
+                "description": "con_5",
+                "sourceStageId": "stage5",
+                "targetStageId": "stage6"
+            },
+            {
+                "id": "con_6",
+                "name": "con_6",
+                "description": "con_6",
+                "sourceStageId": "stage6",
+                "targetStageId": "stage7"
+            },
+            {
+                "id": "con_7",
+                "name": "con_7",
+                "description": "con_7",
+                "sourceStageId": "stage7",
+                "targetStageId": "stage8"
+            },
+            {
+                "id": "con_8",
+                "name": "con_8",
+                "description": "con_8",
+                "sourceStageId": "stage8",
+                "targetStageId": "stage9"
+            }
+        ]
+      },
+      "workflowData": {
+        "selectedEventId": 3,
+        "stage2": {
+          "status": "complete",
+          "date": "2015-04-16T00:00:00.000Z",
+          "events": [
+            {
+              "id": 1,
+              "eventDate": "2015-04-17T00:00:00.000Z",
+              "type": "Operation booking",
+              "details": {
+                "date": "2015-04-23T00:00:00.000Z",
+                "duration": "2 hours"
+              }
+            },
+            {
+              "id": 2,
+              "eventDate": "2015-04-18T00:00:00.000Z",
+              "type": "Consent form",
+              "visualAcuity": {
+                "left": [
+                  {
+                    "value": "6/3",
+                    "method": "Unaided"
+                  },
+                  {
+                    "value": "6/12",
+                    "method": "Pinhole"
+                  }
+                ],
+                "leftComments": "Extra comments box...",
+                "rightComments": "",
+                "right": [
+                ]
+              },
+              "eyedraw": false
+            }
+          ]
+        },
+        "stage3": {
+          "status": "complete",
+          "date": "2015-04-19T00:00:00.000Z"
+        },
+        "stage4": {
+          "status": "complete",
+          "date": "2015-04-19T00:00:00.000Z"
+        },
+        "stage5": {
+          "status": "in-progress",
+          "date": "2015-04-20T00:00:00.000Z",
+          "events": [
+            {
+              "id": 3,
+              "eventDate": "2015-04-23T00:00:00.000Z",
+              "type": "Examination",
+              "visualAcuity": {
+                "left": [
+                  {
+                    "value": "6/3",
+                    "method": "Unaided"
+                  },
+                  {
+                    "value": "6/12",
+                    "method": "Pinhole"
+                  }
+                ],
+                "leftComments": "Extra comments box...",
+                "rightComments": "",
+                "right": [
+                ]
+              },
+              "eyedraw": true
+            }
+          ]
+        },
+        "stage6": {
+          "status": "not-started",
+          "date": ""
+        },
+        "stage7": {
+          "status": "not-started",
+          "date": ""
+        },
+        "stage8": {
+          "status": "not-started",
+          "date": ""
+        }
+      }
+
     }
   ]
 }

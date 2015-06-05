@@ -37,6 +37,18 @@ angular.module('patientApp.workflowService', [])
           return stageList[i];
         }
       }
+    },
+
+    refreshWorkflowData: function(workflow, workflowData) {
+      for (var i=0; i<workflow.stage_list.length; i++) {
+        if (workflowData[workflow.stage_list[i].id] == undefined) {
+          workflowData[workflow.stage_list[i].id] = {
+            "status": "not-started",
+            "date": ""
+          };
+        }
+      }
+      return workflowData;
     }
     
   };

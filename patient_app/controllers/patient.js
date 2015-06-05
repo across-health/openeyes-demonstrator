@@ -96,6 +96,7 @@ angular.module('patientApp.patient', ['ngRoute'])
 
   $scope.exit = function() {
     $scope.episode.workflow = rawWorkflow.workflow;
+    $scope.episode.workflowData = workflowService.refreshWorkflowData(rawWorkflow.workflow, $scope.episode.workflowData);
     patientService.setEpisodeById($scope.episode.id, $scope.episode);
     $location.path('episode/' + $scope.episode.id);
   }

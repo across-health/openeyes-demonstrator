@@ -47,7 +47,6 @@ angular.module('patientApp.patient', ['ngRoute'])
 
   // get episode
   var episodeId = $routeParams.id;
-  console.log(patientService.getEpisodes());
   if (patientService.getEpisodes().length == 0) {
     console.log('EpisodeCtrl: no episodes found locally.');
     var patientId = $location.absUrl().match('[0-9]+#')[0].replace('#', '');
@@ -65,8 +64,8 @@ angular.module('patientApp.patient', ['ngRoute'])
   } else {
     console.log('EpisodeCtrl: episodes found locally.');
     $scope.episode = patientService.getEpisodeById(episodeId);
+
     $scope.stageList = workflowService.processWorkflow($scope.episode);
-    console.log($scope.stageList);
     $window.rawWorkflow = workflowService.rawWorkflow;
     $scope.selectEvent($scope.episode.workflowData.selectedStageId, $scope.episode.workflowData.selectedEventId);
   }
@@ -86,8 +85,20 @@ angular.module('patientApp.patient', ['ngRoute'])
 }])
 
 .controller('WorkflowCtrl', ['$scope', '$routeParams', '$location', '$window', 'patientService', 'dataService', 'workflowService', function($scope, $routeParams, $location, $window, patientService, dataService, workflowService) {
+
   var episodeId = $routeParams.id;
-  $scope.episode = patientService.getEpisodeById(episodeId);
-  $scope.stageList = workflowService.processWorkflow($scope.episode);
+  if (patientService.getEpisodes().length == 0) {
+    $location.path('/');
+  } else {
+    $scope.episode = patientService.getEpisodeById(episodeId);
+    $scope.stageList = workflowService.processWorkflow($scope.episode);
+  }
+
+  $scope.exit = function() {
+    $scope.episode.workflow = rawWorkflow.workflow;
+    patientService.setEpisodeById($scope.episode.id, $scope.episode);
+    $location.path('episode/' + $scope.episode.id);
+  }
+
 }]);
 

@@ -31,6 +31,10 @@ angular.module('patientApp.patientService', [])
           return this.episodes[i];
         }
       }
+    },
+
+    setEpisodeById: function(id, episode) {
+      this.episodes[id] = episode;
     }
   };
 

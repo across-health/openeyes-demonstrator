@@ -251,8 +251,8 @@
               "id": 1,
               "eventDate": "2015-04-17T00:00:00.000Z",
               "type": "Operation booking",
-              "details": {
-                "date": "2015-04-23T00:00:00.000Z",
+              "operationBooking": {
+                "date": "2015-04-23T13:30:00.000Z",
                 "duration": "2 hours"
               }
             },
@@ -260,23 +260,9 @@
               "id": 2,
               "eventDate": "2015-04-18T00:00:00.000Z",
               "type": "Consent form",
-              "visualAcuity": {
-                "left": [
-                  {
-                    "value": "6/3",
-                    "method": "Unaided"
-                  },
-                  {
-                    "value": "6/12",
-                    "method": "Pinhole"
-                  }
-                ],
-                "leftComments": "Extra comments box...",
-                "rightComments": "",
-                "right": [
-                ]
-              },
-              "eyedraw": false
+              "consentForm": {
+                "signedDate": "2015-04-18T00:00:00.000Z"
+              }
             }
           }
         },

@@ -55,7 +55,6 @@ angular.module('patientApp.patient', ['ngRoute'])
         patientService.storeEpisodes(data.episodes);
         $scope.episode = patientService.getEpisodeById(episodeId);
         $scope.stageList = workflowService.processWorkflow($scope.episode);
-        console.log($scope.stageList);
         $window.rawWorkflow = workflowService.rawWorkflow;
         $scope.selectEvent($scope.episode.workflowData.selectedStageId, $scope.episode.workflowData.selectedEventId);
       })

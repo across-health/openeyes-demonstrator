@@ -21,8 +21,11 @@
     <div ng-repeat="stage in stageList">
 
       <div class="row" ng-show="stage.isStart()">
-        <div class="small-12 columns">
+        <div class="small-10 columns">
           <div class="wf-start"></div>
+        </div>
+        <div class="small-2 columns amend-btn">
+          <a class="small-text right" href="#/episode/{{episode.id}}/workflow">Amend</a>
         </div>
       </div>
 
@@ -51,7 +54,7 @@
       </div>
 
       <div class="row" ng-show="stage.isStart()">
-        <div class="small-12 columns">
+        <div class="small-3 columns">
           <div class="connector short"></div>
         </div>
       </div>
@@ -60,7 +63,7 @@
       <div ng-repeat="(eventId, event) in stage.events">
         <div class="row selectable-event" ng-class="episode.workflowData.selectedEventId == eventId ? 'selected-event' : ''" ng-click="selectEvent(stage.id, eventId)">
           <div class="small-3 columns">
-            <div class="square"></div>
+            <div class="connector x-short"></div>
           </div>
           <div class="small-5 columns">
             <span class="label secondary">{{event.type}}</span>
@@ -69,9 +72,9 @@
             <span class="small-text">{{event.eventDate | date:'MMM dd, yyyy'}}</span>
           </div>
         </div>
-        <div class="row" ng-show="stage.name != 'End'">
+        <div class="row" ng-show="$last">
           <div class="small-12 columns">
-            <div class="connector x-short"></div>
+            <div class="connector xx-short"></div>
           </div>
         </div>
       <!-- end events -->

@@ -15,7 +15,6 @@
       "subSpecialty": "Cataract",
       "eye": "Both",
       "diagnosis": "Toxic cataract",
-
       "workflow": {
         "stage_list": [
           {
@@ -330,7 +329,6 @@
           "date": ""
         }
       }
-
     }
   ]
 }

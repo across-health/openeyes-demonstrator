@@ -10,7 +10,7 @@ angular.module('patientApp.dataService', [])
       return $http.get('/api/patient/'+patientId);
     },
     getEpisodes: function(patientId) {
-      console.log('getEpisodes');
+      console.log('dataService.getEpisodes');
       return $http.get('/api/patient/'+patientId+'/episodes');
     }
   };

@@ -40,15 +40,21 @@ angular.module('patientApp.workflowService', [])
     },
 
     refreshWorkflowData: function(workflow, workflowData) {
+      var newWorkflowData = {};
+      newWorkflowData.selectedStageId = workflowData.selectedStageId;
+      newWorkflowData.selectedEventId = workflowData.selectedEventId;
+      var newStage = { "status": "not-started", "date": "" };
       for (var i=0; i<workflow.stage_list.length; i++) {
-        if (workflowData[workflow.stage_list[i].id] == undefined) {
-          workflowData[workflow.stage_list[i].id] = {
-            "status": "not-started",
-            "date": ""
-          };
+        var stage = workflow.stage_list[i];
+        if (stage.name.toLowerCase() !== 'start' && stage.name.toLowerCase !== 'end') {
+          if (workflowData[stage.id] == undefined) {
+            newWorkflowData[stage.id] = newStage;
+          } else {
+            newWorkflowData[stage.id] = workflowData[stage.id];
+          }
         }
       }
-      return workflowData;
+      return newWorkflowData;
     }
     
   };

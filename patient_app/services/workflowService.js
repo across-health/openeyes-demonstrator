@@ -6,17 +6,21 @@ angular.module('patientApp.workflowService', [])
 
   return {
 
+    rawWorkflow: {},
+
     processWorkflow: function(episode) {
+      console.log('processWorkflow');
+      this.rawWorkflow.workflow = episode.workflow;
       var processedStageList = [];
       var stages = episode.workflow.stage_list;
       var transitions = episode.workflow.transition_list;
       var workflowData = episode.workflowData;
       for (var i=0; i<transitions.length; i++) {
         if (i === 0) {
-          var stage = new Stage(this.findStage(stages, transitions[i].sourceStageId));
+          var stage = new WorkflowStage(this.findStage(stages, transitions[i].sourceStageId));
           processedStageList.push(stage);
         }
-        var stage = new Stage(this.findStage(stages, transitions[i].targetStageId));
+        var stage = new WorkflowStage(this.findStage(stages, transitions[i].targetStageId));
         if (workflowData[stage.id] != undefined) {
           stage.status = workflowData[stage.id].status;
           stage.date = workflowData[stage.id].date;

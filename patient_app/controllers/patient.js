@@ -11,6 +11,10 @@ angular.module('patientApp.patient', ['ngRoute'])
     .when('/episode/:id', {
       templateUrl: '/patient_app/views/patient/episode.html',
       controller: 'EpisodeCtrl'
+    })
+    .when('/episode/:id/workflow', {
+      templateUrl: '/patient_app/views/patient/workflow.html',
+      controller: 'WorkflowCtrl'
     });
 }])
 
@@ -32,29 +36,39 @@ angular.module('patientApp.patient', ['ngRoute'])
     });
 }])
 
-.controller('EpisodeCtrl', ['$scope', '$routeParams', '$location', 'patientService', 'dataService', 'workflowService', function($scope, $routeParams, $location, patientService, dataService, workflowService) {
-  // get episode
-  var episodeId = $routeParams.id;
-  if (patientService.getEpisodes().length == 0) {
-    var patientId = $location.absUrl().match('[0-9]+#')[0].replace('#', '');
-    dataService.getEpisodes(patientId)
-      .success(function(data) {
-        patientService.storeEpisodes(data.episodes);
-        $scope.episode = patientService.getEpisodeById(episodeId);
-        $scope.stageList = workflowService.processWorkflow($scope.episode);
-        $scope.selectEvent($scope.episode.workflowData.selectedStageId, $scope.episode.workflowData.selectedEventId);
-      })
-      .error(function(data) {
-      });
-  } else {
-    $scope.episode = patientService.getEpisodeById(episodeId);
-  }
+.controller('EpisodeCtrl', ['$scope', '$routeParams', '$location', '$window', 'patientService', 'dataService', 'workflowService', function($scope, $routeParams, $location, $window, patientService, dataService, workflowService) {
 
   $scope.selectEvent = function(stageId, eventId) {
     console.log('selecting event = ' + stageId + '/' + eventId);
     $scope.episode.workflowData.selectedStageId = stageId;
     $scope.episode.workflowData.selectedEventId = eventId;
     $scope.event = $scope.episode.workflowData[stageId].events[eventId];
+  }
+
+  // get episode
+  var episodeId = $routeParams.id;
+  console.log(patientService.getEpisodes());
+  if (patientService.getEpisodes().length == 0) {
+    console.log('EpisodeCtrl: no episodes found locally.');
+    var patientId = $location.absUrl().match('[0-9]+#')[0].replace('#', '');
+    dataService.getEpisodes(patientId)
+      .success(function(data) {
+        patientService.storeEpisodes(data.episodes);
+        $scope.episode = patientService.getEpisodeById(episodeId);
+        $scope.stageList = workflowService.processWorkflow($scope.episode);
+        console.log($scope.stageList);
+        $window.rawWorkflow = workflowService.rawWorkflow;
+        $scope.selectEvent($scope.episode.workflowData.selectedStageId, $scope.episode.workflowData.selectedEventId);
+      })
+      .error(function(data) {
+      });
+  } else {
+    console.log('EpisodeCtrl: episodes found locally.');
+    $scope.episode = patientService.getEpisodeById(episodeId);
+    $scope.stageList = workflowService.processWorkflow($scope.episode);
+    console.log($scope.stageList);
+    $window.rawWorkflow = workflowService.rawWorkflow;
+    $scope.selectEvent($scope.episode.workflowData.selectedStageId, $scope.episode.workflowData.selectedEventId);
   }
 
   $scope.removeEntry = function(eye, entryId) {
@@ -69,4 +83,11 @@ angular.module('patientApp.patient', ['ngRoute'])
     $scope.episode.workflowData[stageId].events[eventId].visualAcuity[eye].push({"value": "", "method": ""});
   };
 
+}])
+
+.controller('WorkflowCtrl', ['$scope', '$routeParams', '$location', '$window', 'patientService', 'dataService', 'workflowService', function($scope, $routeParams, $location, $window, patientService, dataService, workflowService) {
+  var episodeId = $routeParams.id;
+  $scope.episode = patientService.getEpisodeById(episodeId);
+  $scope.stageList = workflowService.processWorkflow($scope.episode);
 }]);
+

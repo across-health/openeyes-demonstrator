@@ -9,32 +9,41 @@ angular.module('patientApp.workflowService', [])
     rawWorkflow: {},
 
     processWorkflow: function(episode) {
-      console.log('processWorkflow');
       this.rawWorkflow.workflow = episode.workflow;
       var processedStageList = [];
       var stages = episode.workflow.stage_list;
       var transitions = episode.workflow.transition_list;
       var workflowData = episode.workflowData;
-      for (var i=0; i<transitions.length; i++) {
-        if (i === 0) {
-          var stage = new WorkflowStage(this.findStage(stages, transitions[i].sourceStageId));
-          processedStageList.push(stage);
-        }
-        var stage = new WorkflowStage(this.findStage(stages, transitions[i].targetStageId));
+
+      var stage = this.findStage(stages, 'name', 'Start');
+      processedStageList.push(new WorkflowStage(stage));
+      var transition = this.findTransition(transitions, 'sourceStageId', stage.id);
+
+      while (transition !== undefined) {
+        stage = new WorkflowStage(this.findStage(stages, 'id', transition.targetStageId));
         if (workflowData[stage.id] != undefined) {
           stage.status = workflowData[stage.id].status;
           stage.date = workflowData[stage.id].date;
           stage.events = workflowData[stage.id].events;
         }
         processedStageList.push(stage);
+        transition = this.findTransition(transitions, 'sourceStageId', transition.targetStageId);
       }
       return processedStageList;
     },
 
-    findStage: function(stageList, stageId) {
+    findStage: function(stageList, attribute, value) {
       for (var i=0; i<stageList.length; i++) {
-        if (stageList[i].id === stageId) {
+        if (stageList[i][attribute] === value) {
           return stageList[i];
+        }
+      }
+    },
+
+    findTransition: function(transitionList, attribute, value) {
+      for (var i=0; i<transitionList.length; i++) {
+        if (transitionList[i][attribute] === value) {
+          return transitionList[i];
         }
       }
     },

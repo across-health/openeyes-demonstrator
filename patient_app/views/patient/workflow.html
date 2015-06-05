@@ -47,10 +47,7 @@ $(document).ready(function() {
     toolbox: $('#toolbox'), // jQuery object for the HTML element that you want to be the workspace - the area where the 'Add Stage' and 'Save' buttons get rendered.
     save: function(workflow_json) { // A callback function that is called when you click the 'Save' button in the toolbox. workflow_json is the full JSON of the workflow. `this` refers to the workspace object. `this.toJSON()` will return the workflow in JSON form (i.e. not a string). `this.stage_list` will return all the stages. `this.transition_list` will return all the transitions.
       // Below is an example, you can put AJAX or something here to save it.
-      console.log(JSON.stringify(workflow_json));
-      console.log(this);
       window.rawWorkflow = workflow_json;
-      // window.history.back();
     }
     , initial_data: window.rawWorkflow
     // Alternatively - dont use initial_data and call workspace.fromJSON() passing to it the JSON you want to render as per the format above.

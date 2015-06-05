@@ -13,7 +13,7 @@ angular.module('patientApp.patient', ['ngRoute'])
       controller: 'EpisodeCtrl'
     })
     .when('/episode/:id/workflow', {
-      templateUrl: '/patient_app/views/patient/workflow.html',
+      templateUrl: '/patient_app/views/patient/editWorkflow.html',
       controller: 'WorkflowCtrl'
     });
 }])

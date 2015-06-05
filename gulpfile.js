@@ -17,6 +17,7 @@ gulp.task('combine-angular-patient', function() {
       './patient_app/app.js',
       './patient_app/models/*.js',
       './patient_app/controllers/*.js',
+      './patient_app/directives/*.js',
       './patient_app/services/*.js'
     ])
     .pipe(concat('patient_app.js'))

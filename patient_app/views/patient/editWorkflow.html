@@ -1,23 +1,6 @@
-<div class="row panel callout radius">
-  <div class="small-2 columns">
-    {{episode.subSpecialty}}
-  </div>
-  <div class="small-4 columns">
-    {{episode.startDate | date:'MMM dd, yyyy'}} -
-    <span ng-show="episode.endDate != ''">{{episode.endDate | date:'MMM dd, yyyy'}}</span>
-    <span ng-show="episode.endDate == ''"><em>outstanding</em></span>
-  </div>
-  <div class="small-2 columns">
-    <span class="static-label">Eye: </span>{{episode.eye}}
-  </div>
-  <div class="small-4 columns">
-    <span class="static-label">Diagnosis: </span>{{episode.diagnosis}}
-  </div>
-</div>
-
+<div episode-header></div>
 <!-- You need to create three elements to house the toolbox (Add Stage + Save buttons), the workspace (where you draw the shapes) and the editor (a form for editing details about a shape) -->
 <!-- You will reference these below in the JavaScript -->
-
 <h4 class="section-header">Care pathway</h4>
 
 <div class="row">

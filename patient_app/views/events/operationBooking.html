@@ -1,0 +1,22 @@
+<div ng-show="event.operationBooking">
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="panel">
+        <div class="row">
+          <div class="small-1 columns">
+            <strong>Date</strong>
+          </div>
+          <div class="small-11 columns">
+            {{event.operationBooking.date | date:'MMM dd, yyyy HH:mm'}}
+          </div>
+          <div class="small-1 columns">
+            <strong>Duration</strong>
+          </div>
+          <div class="small-11 columns">
+            {{event.operationBooking.duration}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

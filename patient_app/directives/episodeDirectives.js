@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('patientApp')
 .directive('operationBooking', function () {
   return {

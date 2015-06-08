@@ -37,7 +37,7 @@
     </div>
     <!-- events -->
     <div ng-repeat="(eventId, event) in stage.events">
-      <div class="row selectable-event" ng-class="episode.workflowData.selectedEventId == eventId ? 'selected-event' : ''" ng-click="selectEvent(stage.id, eventId)">
+      <div class="row selectable-event" ng-class="episode.workflowData.selectedStageId == stage.id && episode.workflowData.selectedEventId == eventId ? 'selected-event' : ''" ng-click="selectEvent(stage.id, eventId)">
         <div class="small-3 columns">
           <div class="connector x-short"></div>
         </div>

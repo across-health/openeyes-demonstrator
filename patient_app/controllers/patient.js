@@ -54,6 +54,7 @@ angular.module('patientApp.patient', ['ngRoute'])
       .success(function(data) {
         patientService.storeEpisodes(data.episodes);
         $scope.episode = patientService.getEpisodeById(episodeId);
+        $scope.prevEpisode = patientService.getPreviousEpisode(episodeId);
         $scope.stageList = workflowService.processWorkflow($scope.episode);
         $window.rawWorkflow = workflowService.rawWorkflow;
         $scope.selectEvent($scope.episode.workflowData.selectedStageId, $scope.episode.workflowData.selectedEventId);
@@ -80,6 +81,22 @@ angular.module('patientApp.patient', ['ngRoute'])
     var eventId = $scope.episode.workflowData.selectedEventId;
     $scope.episode.workflowData[stageId].events[eventId].visualAcuity[eye].push({"value": "", "method": ""});
   };
+
+  $scope.generatePrevEpisodeTooltip = function() {
+    if ($scope.prevEpisode != undefined) {
+      return "<p>" + 
+          "<b>" + $scope.prevEpisode.subSpecialty + "</b>" +
+          "<br/>" +
+          $.datepicker.formatDate('M dd, yy', new Date($scope.prevEpisode.startDate)) + " to " + $.datepicker.formatDate('M dd, yy', new Date($scope.prevEpisode.endDate)) +
+          "<br/>" +
+          "Eye: " + $scope.prevEpisode.eye +
+          "<br/>" +
+          "Diagnosis: " + $scope.prevEpisode.diagnosis + 
+        "</p>";
+    } else {
+      return "";
+    }
+  }
 
 }])
 

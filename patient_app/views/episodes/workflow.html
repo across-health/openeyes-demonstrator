@@ -39,9 +39,9 @@
     <div ng-repeat="(eventId, event) in stage.events">
       <div class="row selectable-event" ng-class="episode.workflowData.selectedStageId == stage.id && episode.workflowData.selectedEventId == eventId ? 'selected-event' : ''" ng-click="selectEvent(stage.id, eventId)">
         <div class="small-3 columns">
-          <div class="connector x-short"></div>
+          <div class="connector x-short" ng-class="stage.status"></div>
         </div>
-        <div class="small-5 columns">
+        <div class="small-5 columns" ng-class="stage.status">
           <span class="label secondary">{{event.type}}</span>
           <!-- <span popover="popover" popover-title="popover title" class="label secondary">{{event.type}}</span> -->
         </div>
@@ -51,7 +51,7 @@
       </div>
       <div class="row" ng-show="$last">
         <div class="small-12 columns">
-          <div class="connector xx-short"></div>
+          <div class="connector" ng-class="stage.getFollowingConnectorClass()"></div>
         </div>
       </div>
     <!-- end events -->

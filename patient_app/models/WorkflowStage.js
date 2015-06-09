@@ -38,13 +38,18 @@ WorkflowStage.prototype.isComplete = function() {
 }
 
 WorkflowStage.prototype.getFollowingConnectorClass = function() {
-  if (this.events != undefined) {
-    return 'xx-short';
+  if (this.name.toLowerCase() === 'start' || this.name.toLowerCase() === 'end') {
+    return '';
   }
-  if (this.status == 'complete' || this.status == 'in-progress') {
-    return 'short';
+  var classes = [];
+  numOfEvents = Object.keys(this.events).length;
+  if (numOfEvents > 0) {
+    classes.push('xx-short');
   }
-  return 'not-started';
+  if (this.status == 'not-started') {
+    classes.push('not-started');
+  }
+  return classes.join(' ');
 }
 
 WorkflowStage.prototype.hasEvents = function() {

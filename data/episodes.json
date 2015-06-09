@@ -51,8 +51,8 @@
           },
           {
             "id": "stage350827",
-            "name": "End",
-            "description": "This is the final stage.",
+            "name": "Community follow up 1",
+            "description": "Follow up 1",
             "status": "OK",
             "epTargetTopCenterUUID": "epTargetTopCenter-stage350827",
             "epTargetBottomCenterUUID": "epTargetBottomCenter-stage350827",
@@ -160,11 +160,27 @@
             "epSourceRightMiddleUUID": "epSourceRightMiddle-stage278018",
             "posX": 640,
             "posY": 180
+          },
+          {
+            "id": "stage269538",
+            "name": "End",
+            "description": "Final stage",
+            "status": "OK",
+            "epTargetTopCenterUUID": "epTargetTopCenter-stage269538",
+            "epTargetBottomCenterUUID": "epTargetBottomCenter-stage269538",
+            "epTargetLeftMiddleUUID": "epTargetLeftMiddle-stage269538",
+            "epTargetRightMiddleUUID": "epTargetRightMiddle-stage269538",
+            "epSourceTopCenterUUID": "epSourceTopCenter-stage269538",
+            "epSourceBottomCenterUUID": "epSourceBottomCenter-stage269538",
+            "epSourceLeftMiddleUUID": "epSourceLeftMiddle-stage269538",
+            "epSourceRightMiddleUUID": "epSourceRightMiddle-stage269538",
+            "posX": 640,
+            "posY": 520
           }
         ],
         "transition_list": [
           {
-            "id": "con_65",
+            "id": "con_145",
             "name": "Begin",
             "description": "This transition always fires automatically.",
             "sourceStageId": "stage446354",
@@ -176,7 +192,7 @@
             "reassignmentUser": ""
           },
           {
-            "id": "con_67",
+            "id": "con_147",
             "name": "Consultation complete",
             "description": "This patient requires a consultation, send them to a doctor.",
             "sourceStageId": "stage766857",
@@ -185,7 +201,7 @@
             "targetEndpoint": "epTargetTopCenter-stage402170"
           },
           {
-            "id": "con_203",
+            "id": "con_149",
             "name": "Listing complete",
             "description": "",
             "sourceStageId": "stage402170",
@@ -194,7 +210,7 @@
             "targetEndpoint": "epTargetLeftMiddle-stage219996"
           },
           {
-            "id": "con_211",
+            "id": "con_151",
             "name": "Consent complete",
             "description": "",
             "sourceStageId": "stage219996",
@@ -203,7 +219,7 @@
             "targetEndpoint": "epTargetTopCenter-stage527901"
           },
           {
-            "id": "con_147",
+            "id": "con_153",
             "name": "Measurement complete",
             "description": "",
             "sourceStageId": "stage527901",
@@ -212,7 +228,7 @@
             "targetEndpoint": "epTargetTopCenter-stage972515"
           },
           {
-            "id": "con_219",
+            "id": "con_155",
             "name": "Surgery complete",
             "description": "",
             "sourceStageId": "stage972515",
@@ -221,7 +237,7 @@
             "targetEndpoint": "epTargetLeftMiddle-stage386249"
           },
           {
-            "id": "con_227",
+            "id": "con_157",
             "name": "Follow up complete",
             "description": "",
             "sourceStageId": "stage386249",
@@ -230,13 +246,22 @@
             "targetEndpoint": "epTargetTopCenter-stage278018"
           },
           {
-            "id": "con_235",
+            "id": "con_159",
             "name": "Discharge complete",
             "description": "",
             "sourceStageId": "stage278018",
             "targetStageId": "stage350827",
             "sourceEndpoint": "epSourceBottomCenter-stage278018",
             "targetEndpoint": "epTargetTopCenter-stage350827"
+          },
+          {
+            "id": "con_187",
+            "name": "Follow up complete",
+            "description": "",
+            "sourceStageId": "stage350827",
+            "targetStageId": "stage269538",
+            "sourceEndpoint": "epSourceBottomCenter-stage350827",
+            "targetEndpoint": "epTargetTopCenter-stage269538"
           }
         ]
       },
@@ -327,6 +352,11 @@
           "events": {}
         },
         "stage278018": {
+          "status": "not-started",
+          "date": "",
+          "events": {}
+        },
+        "stage350827": {
           "status": "not-started",
           "date": "",
           "events": {}

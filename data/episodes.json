@@ -47,7 +47,7 @@
             "epSourceLeftMiddleUUID": "epSourceLeftMiddle-stage766857",
             "epSourceRightMiddleUUID": "epSourceRightMiddle-stage766857",
             "posX": 20,
-            "posY": 180
+            "posY": 340
           },
           {
             "id": "stage350827",
@@ -62,8 +62,8 @@
             "epSourceBottomCenterUUID": "epSourceBottomCenter-stage350827",
             "epSourceLeftMiddleUUID": "epSourceLeftMiddle-stage350827",
             "epSourceRightMiddleUUID": "epSourceRightMiddle-stage350827",
-            "posX": 640,
-            "posY": 360
+            "posX": 660,
+            "posY": 160
           },
           {
             "id": "stage402170",
@@ -79,7 +79,7 @@
             "epSourceLeftMiddleUUID": "epSourceLeftMiddle-stage402170",
             "epSourceRightMiddleUUID": "epSourceRightMiddle-stage402170",
             "posX": 20,
-            "posY": 360
+            "posY": 500
           },
           {
             "id": "stage219996",
@@ -111,7 +111,7 @@
             "epSourceLeftMiddleUUID": "epSourceLeftMiddle-stage527901",
             "epSourceRightMiddleUUID": "epSourceRightMiddle-stage527901",
             "posX": 340,
-            "posY": 180
+            "posY": 160
           },
           {
             "id": "stage972515",
@@ -127,7 +127,7 @@
             "epSourceLeftMiddleUUID": "epSourceLeftMiddle-stage972515",
             "epSourceRightMiddleUUID": "epSourceRightMiddle-stage972515",
             "posX": 340,
-            "posY": 360
+            "posY": 340
           },
           {
             "id": "stage386249",
@@ -142,8 +142,8 @@
             "epSourceBottomCenterUUID": "epSourceBottomCenter-stage386249",
             "epSourceLeftMiddleUUID": "epSourceLeftMiddle-stage386249",
             "epSourceRightMiddleUUID": "epSourceRightMiddle-stage386249",
-            "posX": 640,
-            "posY": 20
+            "posX": 340,
+            "posY": 500
           },
           {
             "id": "stage278018",
@@ -158,8 +158,8 @@
             "epSourceBottomCenterUUID": "epSourceBottomCenter-stage278018",
             "epSourceLeftMiddleUUID": "epSourceLeftMiddle-stage278018",
             "epSourceRightMiddleUUID": "epSourceRightMiddle-stage278018",
-            "posX": 640,
-            "posY": 180
+            "posX": 660,
+            "posY": 20
           },
           {
             "id": "stage269538",
@@ -174,23 +174,27 @@
             "epSourceBottomCenterUUID": "epSourceBottomCenter-stage269538",
             "epSourceLeftMiddleUUID": "epSourceLeftMiddle-stage269538",
             "epSourceRightMiddleUUID": "epSourceRightMiddle-stage269538",
-            "posX": 640,
-            "posY": 520
+            "posX": 660,
+            "posY": 500
+          },
+          {
+            "id": "stage836932",
+            "name": "External referral",
+            "description": "",
+            "status": "OK",
+            "epTargetTopCenterUUID": "epTargetTopCenter-stage836932",
+            "epTargetBottomCenterUUID": "epTargetBottomCenter-stage836932",
+            "epTargetLeftMiddleUUID": "epTargetLeftMiddle-stage836932",
+            "epTargetRightMiddleUUID": "epTargetRightMiddle-stage836932",
+            "epSourceTopCenterUUID": "epSourceTopCenter-stage836932",
+            "epSourceBottomCenterUUID": "epSourceBottomCenter-stage836932",
+            "epSourceLeftMiddleUUID": "epSourceLeftMiddle-stage836932",
+            "epSourceRightMiddleUUID": "epSourceRightMiddle-stage836932",
+            "posX": 20,
+            "posY": 160
           }
         ],
         "transition_list": [
-          {
-            "id": "con_145",
-            "name": "Begin",
-            "description": "This transition always fires automatically.",
-            "sourceStageId": "stage446354",
-            "targetStageId": "stage766857",
-            "sourceEndpoint": "epSourceBottomCenter-stage446354",
-            "targetEndpoint": "epTargetTopCenter-stage766857",
-            "reassignmentType": "current_user",
-            "reassignmentGroup": "",
-            "reassignmentUser": ""
-          },
           {
             "id": "con_147",
             "name": "Consultation complete",
@@ -199,15 +203,6 @@
             "targetStageId": "stage402170",
             "sourceEndpoint": "epSourceBottomCenter-stage766857",
             "targetEndpoint": "epTargetTopCenter-stage402170"
-          },
-          {
-            "id": "con_149",
-            "name": "Listing complete",
-            "description": "",
-            "sourceStageId": "stage402170",
-            "targetStageId": "stage219996",
-            "sourceEndpoint": "epSourceRightMiddle-stage402170",
-            "targetEndpoint": "epTargetLeftMiddle-stage219996"
           },
           {
             "id": "con_151",
@@ -228,24 +223,6 @@
             "targetEndpoint": "epTargetTopCenter-stage972515"
           },
           {
-            "id": "con_155",
-            "name": "Surgery complete",
-            "description": "",
-            "sourceStageId": "stage972515",
-            "targetStageId": "stage386249",
-            "sourceEndpoint": "epSourceRightMiddle-stage972515",
-            "targetEndpoint": "epTargetLeftMiddle-stage386249"
-          },
-          {
-            "id": "con_157",
-            "name": "Follow up complete",
-            "description": "",
-            "sourceStageId": "stage386249",
-            "targetStageId": "stage278018",
-            "sourceEndpoint": "epSourceBottomCenter-stage386249",
-            "targetEndpoint": "epTargetTopCenter-stage278018"
-          },
-          {
             "id": "con_159",
             "name": "Discharge complete",
             "description": "",
@@ -262,6 +239,51 @@
             "targetStageId": "stage269538",
             "sourceEndpoint": "epSourceBottomCenter-stage350827",
             "targetEndpoint": "epTargetTopCenter-stage269538"
+          },
+          {
+            "id": "con_234",
+            "name": "Begin",
+            "description": "",
+            "sourceStageId": "stage446354",
+            "targetStageId": "stage836932",
+            "sourceEndpoint": "epSourceBottomCenter-stage446354",
+            "targetEndpoint": "epTargetTopCenter-stage836932"
+          },
+          {
+            "id": "con_242",
+            "name": "Referral complete",
+            "description": "",
+            "sourceStageId": "stage836932",
+            "targetStageId": "stage766857",
+            "sourceEndpoint": "epSourceBottomCenter-stage836932",
+            "targetEndpoint": "epTargetTopCenter-stage766857"
+          },
+          {
+            "id": "con_250",
+            "name": "Listing complete",
+            "description": "",
+            "sourceStageId": "stage402170",
+            "targetStageId": "stage219996",
+            "sourceEndpoint": "epSourceRightMiddle-stage402170",
+            "targetEndpoint": "epTargetLeftMiddle-stage219996"
+          },
+          {
+            "id": "con_258",
+            "name": "Surgery complete",
+            "description": "",
+            "sourceStageId": "stage972515",
+            "targetStageId": "stage386249",
+            "sourceEndpoint": "epSourceBottomCenter-stage972515",
+            "targetEndpoint": "epTargetTopCenter-stage386249"
+          },
+          {
+            "id": "con_266",
+            "name": "Follow up complete",
+            "description": "",
+            "sourceStageId": "stage386249",
+            "targetStageId": "stage278018",
+            "sourceEndpoint": "epSourceRightMiddle-stage386249",
+            "targetEndpoint": "epTargetLeftMiddle-stage278018"
           }
         ]
       },
@@ -340,6 +362,18 @@
               "eyedraw": true
             }
           }
+        },
+        "stage836932": {
+          "status": "complete",
+          "date": "2015-04-14T00:00:00.000Z",
+          "events": {
+            "event2": {
+              "id": 2,
+              "eventDate": "2015-04-14T00:00:00.000Z",
+              "type": "Assessment"
+            }
+          }
+
         },
         "stage972515": {
           "status": "not-started",

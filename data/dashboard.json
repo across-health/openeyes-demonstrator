@@ -1,0 +1,63 @@
+{
+  "today": [
+    {
+      "id": "1",
+      "firstNames": "Medsreca",
+      "lastNames": "Wurst",
+      "gender": "F",
+      "dateOfBirth": "1990-03-09T00:00:00.000Z",
+      "time": "09:00",
+      "episode": "Glaucoma"
+    },
+    {
+      "id": "2",
+      "firstNames": "Nichole",
+      "lastNames": "Barlow",
+      "gender": "F",
+      "dateOfBirth": "1989-10-01T21:25:44.000Z",
+      "time": "10:30",
+      "episode": "Cataract"
+    },
+    {
+      "id": "3",
+      "firstNames": "Jason",
+      "lastNames": "Brown",
+      "gender": "M",
+      "dateOfBirth": "1990-03-09T00:00:00.000Z",
+      "time": "12:00",
+      "episode": "Glaucoma"
+    }
+  ],
+  "tomorrow": [
+    {
+      "id": "1",
+      "firstNames": "Medsreca",
+      "lastNames": "Wurst",
+      "gender": "F",
+      "dateOfBirth": "1990-03-09T00:00:00.000Z",
+      "time": "09:00",
+      "episode": "Glaucoma"
+    },
+    {
+      "id": "3",
+      "firstNames": "Jason",
+      "lastNames": "Brown",
+      "gender": "M",
+      "dateOfBirth": "1990-03-09T00:00:00.000Z",
+      "time": "12:00",
+      "episode": "Glaucoma"
+    }
+  ],
+  "externalReferrals": [
+  ],
+  "aAndERequests": [
+    {
+      "id": "1",
+      "firstNames": "Medsreca",
+      "lastNames": "Wurst",
+      "gender": "F",
+      "dateOfBirth": "1990-03-09T00:00:00.000Z",
+      "location": "St Thomas's"
+    }
+  ]
+}

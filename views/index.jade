@@ -1,4 +1,67 @@
 extends layout
 
 block content
-  h2 OpenEyes demonstrator
+  h2 OpenEyes dashboard
+  .dashboard
+    .row
+      .small-7.columns
+        h4.section-header Today
+          span.right #{dateToday}
+        .row
+          .small-12.columns
+            table(class='worklist', role='grid')
+              thead
+                td Time
+                td Patient name
+                td DOB
+                td Episode
+              each patient in dashboardData.today
+                tbody
+                  tr
+                    td #{patient.time}
+                    td #{patient.lastNames.toUpperCase()}, #{patient.firstNames} (#{patient.gender})
+                    td #{patientUtils.formatDate(patient.dateOfBirth)}
+                    td #{patient.episode}
+      .small-5.columns
+        h4.section-header A&E requests
+        .row
+          .small-12.columns
+            table(class='worklist', role='grid')
+              thead
+                td Received date
+                td Patient name
+                td DOB
+                td Location
+              each patient in dashboardData.aAndERequests
+                tbody
+                  tr
+                    td
+                      span.priority.high &uarr;
+                      |  08:36am
+                    td #{patient.lastNames.toUpperCase()}, #{patient.firstNames} (#{patient.gender})
+                    td #{patientUtils.formatDate(patient.dateOfBirth)}
+                    td #{patient.location}
+    .row
+      .small-7.columns
+        h4.section-header Tomorrow
+          span.right #{dateTomorrow}
+        .row
+          .small-12.columns
+            table(class='worklist')
+              thead
+                td Time
+                td Patient name
+                td DOB
+                td Episode
+              each patient in dashboardData.tomorrow
+                tbody
+                  tr
+                    td #{patient.time}
+                    td #{patient.lastNames.toUpperCase()}, #{patient.firstNames} (#{patient.gender})
+                    td #{patientUtils.formatDate(patient.dateOfBirth)}
+                    td #{patient.episode}
+      .small-5.columns
+        h4.section-header External referrals
+        .row
+          .small-12.columns
+            em None.

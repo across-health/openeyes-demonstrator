@@ -10,8 +10,11 @@ patientUtils = {
     }
   },
 
-  formatDate: function(date) {
-    return dateFormat(date, "mmmm d, yyyy");
+  formatDate: function(date, format) {
+    if (format == undefined) {
+      format = "mmmm d, yyyy";
+    }
+    return dateFormat(date, format);
   }
 
 };

@@ -82,22 +82,6 @@ angular.module('patientApp.patient', ['ngRoute'])
     $scope.episode.workflowData[stageId].events[eventId].visualAcuity[eye].push({"value": "", "method": ""});
   };
 
-  $scope.generatePrevEpisodeTooltip = function() {
-    if ($scope.prevEpisode != undefined) {
-      return "<p>" + 
-          "<b>" + $scope.prevEpisode.subSpecialty + "</b>" +
-          "<br/>" +
-          $.datepicker.formatDate('M dd, yy', new Date($scope.prevEpisode.startDate)) + " to " + $.datepicker.formatDate('M dd, yy', new Date($scope.prevEpisode.endDate)) +
-          "<br/>" +
-          "Eye: " + $scope.prevEpisode.eye +
-          "<br/>" +
-          "Diagnosis: " + $scope.prevEpisode.diagnosis + 
-        "</p>";
-    } else {
-      return "";
-    }
-  };
-
   $scope.addEvent = function(stage, type) {
     type == undefined ? type = 'Pressure test' : type = type;
     console.log('Adding event to stage :' + stage.name);

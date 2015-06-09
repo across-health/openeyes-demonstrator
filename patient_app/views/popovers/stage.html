@@ -1,1 +1,23 @@
-<button ng-click="addEvent(stage)">Add event</button>
+<div class="row">
+  <div class="small-12 columns">
+    <h4 class="section-header">{{stage.name}} stage</h4>
+  </div>
+</div>
+<div class="row">
+  <div class="small-12 columns">
+    New event:
+  </div>
+</div>
+<div class="row">
+  <div class="small-12 columns">
+    <select ng-model="newEvent.type">
+      <option value="Tonometry">Tonometry</option>
+    </select>
+  </div>
+</div>
+</div>
+<div class="row">
+  <div class="small-12 columns">
+    <button class="button tiny" ng-click="addEvent(stage, newEvent.type)">Add event</button>
+  </div>
+</div>

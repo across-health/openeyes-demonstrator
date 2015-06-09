@@ -87,7 +87,7 @@ angular.module('patientApp.patient', ['ngRoute'])
     console.log('Adding event to stage :' + stage.name);
     $scope.episode.workflowData[stage.id].events["new"] = {
       "eventDate": stage.date,
-      "type": "Pressure test"
+      "type": type
     };
   };
 

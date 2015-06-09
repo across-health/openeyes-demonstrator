@@ -318,15 +318,18 @@
         },
         "stage972515": {
           "status": "not-started",
-          "date": ""
+          "date": "",
+          "events": {}
         },
         "stage386249": {
           "status": "not-started",
-          "date": ""
+          "date": "",
+          "events": {}
         },
         "stage278018": {
           "status": "not-started",
-          "date": ""
+          "date": "",
+          "events": {}
         }
       }
     }

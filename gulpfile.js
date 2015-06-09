@@ -14,6 +14,7 @@ gulp.task('combine-angular-patient', function() {
       './bower_components/angular/angular.min.js',
       './bower_components/angular-route/angular-route.min.js',
       './bower_components/angular-foundation/mm-foundation-tpls.min.js',
+      './bower_components/nsPopover/src/nsPopover.js',
       './patient_app/app.js',
       './patient_app/models/*.js',
       './patient_app/controllers/*.js',
@@ -73,6 +74,7 @@ gulp.task('sass', function () {
   gulp.src([
       './bower_components/foundation/scss/normalize.scss',
       './bower_components/foundation/scss/foundation.scss',
+      './bower_components/nsPopover/sass/ns-popover.scss',
       './workflow-editor-js/workflow.css',
       './stylesheets/style.scss'
     ])

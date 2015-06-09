@@ -19,7 +19,7 @@
         <div class="circle" ng-class="stage.status"><span ng-show="stage.isComplete()">&#10004;</span></div>
       </div>
       <div class="small-5 columns">
-        <span ng-class="stage.status">{{stage.name}}</span>
+        <span ns-popover ns-popover-template="/patient_app/views/popovers/stagePopover.html" ns-popover-trigger="click" ns-popover-placement="top" class="stage" ng-class="stage.status">{{stage.name}}</span>
       </div>
       <div class="small-4 columns">
         <span class="small-text">{{stage.date | date:'MMM dd, yyyy'}}</span>
@@ -43,6 +43,7 @@
         </div>
         <div class="small-5 columns">
           <span class="label secondary">{{event.type}}</span>
+          <!-- <span popover="popover" popover-title="popover title" class="label secondary">{{event.type}}</span> -->
         </div>
         <div class="small-4 columns">
           <span class="small-text">{{event.eventDate | date:'MMM dd, yyyy'}}</span>

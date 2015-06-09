@@ -20,17 +20,29 @@
     height: 50px;
   }
 
-  .MALE {
+  .M {
     width: 55px;
     height: 55px;
     background-color: lightblue;
   }
 
-  .FEMALE {
+  .F {
     width: 55px;
     height: 55px;
     background-color: lightpink;
   }
+}
+
+.nhs-number {
+  background-color: #107ebd;
+  color: #FFFFFF;
+  padding: 3px 8px;
+  border-radius: 3px;
+}
+
+.patient-ids {
+  margin-top: 10px;
+  text-align: right;
 }
 
 .border-right {

@@ -52,7 +52,7 @@ angular.module('patientApp.workflowService', [])
       var newWorkflowData = {};
       newWorkflowData.selectedStageId = workflowData.selectedStageId;
       newWorkflowData.selectedEventId = workflowData.selectedEventId;
-      var newStage = { "status": "not-started", "date": "" };
+      var newStage = { "status": "not-started", "date": "", "events": {} };
       for (var i=0; i<workflow.stage_list.length; i++) {
         var stage = workflow.stage_list[i];
         if (stage.name.toLowerCase() !== 'start' && stage.name.toLowerCase !== 'end') {

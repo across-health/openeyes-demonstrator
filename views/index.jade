@@ -9,13 +9,35 @@ block content
           span.right #{dateToday}
         .row
           .small-12.columns
+            .sub-list-title Morning outpatients
+              span.right 09:00 - 13:00
             table(class='worklist', role='grid')
               thead
                 td Time
                 td Patient name
                 td DOB
                 td Episode
-              each patient in dashboardData.today
+              each patient in dashboardData.today.morningOutpatients
+                tbody
+                  tr
+                    td #{patient.time}
+                    td
+                      a(href='/patient/#{patient.id}') #{patient.lastNames.toUpperCase()}
+                      |, #{patient.firstNames} (#{patient.gender})
+                    td #{patientUtils.formatDate(patient.dateOfBirth)}
+                    td
+                      a(href='/patient/#{patient.id}#/episode/#{patient.episodeId}') #{patient.episode}
+        .row
+          .small-12.columns
+            .sub-list-title Afternoon surgery & discharges
+              span.right 13:00 - 16:00
+            table(class='worklist', role='grid')
+              thead
+                td Time
+                td Patient name
+                td DOB
+                td Episode
+              each patient in dashboardData.today.afternoonSurgery
                 tbody
                   tr
                     td #{patient.time}
@@ -50,13 +72,15 @@ block content
           span.right #{dateTomorrow}
         .row
           .small-12.columns
+            .sub-list-title Morning outpatients
+              span.right 09:00 - 13:00
             table(class='worklist')
               thead
                 td Time
                 td Patient name
                 td DOB
                 td Episode
-              each patient in dashboardData.tomorrow
+              each patient in dashboardData.tomorrow.morningOutpatients
                 tbody
                   tr
                     td #{patient.time}

@@ -103,11 +103,23 @@ h4 {
 .episode-nav {
   height: 66px;
   text-align: center;
-  button {
-    margin-top: 11px;
+  &.prev {
+    text-align: left;
+  }
+  &.next {
+    text-align: right;
   }
   .first, .last {
-    margin-top: 15px;
+    margin-top: 12px;
+  }
+  .nav-label {
+    &.disabled {
+      color: #DDDDDD;
+    }
+  }
+  .nav-icon {
+    font-size: 25px;
+    font-weight: bold;
   }
 }
 

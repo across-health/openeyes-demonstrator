@@ -1,10 +1,12 @@
 <div class="row">
-  <div class="small-1 columns episode-nav">
-    <button ns-popover ns-popover-template="/patient_app/views/popovers/prevEpisode.html" ns-popover-trigger="mouseenter" ns-popover-timeout="0.3" ns-popover-placement="bottom" class="tiny button secondary prev">Previous episode</button>
+  <div class="small-2 columns episode-nav prev">
+    <div class="first" ns-popover ns-popover-template="/patient_app/views/popovers/prevEpisode.html" ns-popover-trigger="mouseenter" ns-popover-timeout="0.3" ns-popover-placement="bottom">
+      <div class="nav-label"><span class="nav-icon">&lt;&lt; </span>Previous episode</div>
+    </div>
   </div>
-  <div class="small-10 columns">
+  <div class="small-8 columns">
     <div class="row panel callout radius">
-      <div class="small-2 columns">
+      <div class="small-3 columns">
         <strong>Episode:</strong> {{episode.subSpecialty}}
       </div>
       <div class="small-4 columns">
@@ -15,12 +17,12 @@
       <div class="small-2 columns">
         <span class="static-label">Eye: </span>{{episode.eye}}
       </div>
-      <div class="small-4 columns">
+      <div class="small-3 columns">
         <span class="static-label">Diagnosis: </span>{{episode.diagnosis}}
       </div>
     </div>
   </div>
-  <div class="small-1 columns episode-nav">
-    <div class="small-text last">No more recent episodes</div>
+  <div class="small-2 columns episode-nav next">
+    <div class="last nav-label disabled">Next episode <span class="nav-icon">&gt;&gt;</span></div>
   </div>
 </div>

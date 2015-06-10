@@ -1,5 +1,23 @@
 extends layout
 
+mixin worklistTable(patientList)
+  table(class='worklist', role='grid')
+    thead
+      td Time
+      td Patient name
+      td DOB
+      td Episode
+    each patient in patientList
+      tbody
+        tr
+          td #{patient.time}
+          td
+            a(href='/patient/#{patient.id}') #{patient.lastNames.toUpperCase()}
+            |, #{patient.firstNames} (#{patient.gender})
+          td #{patientUtils.formatDate(patient.dateOfBirth)}
+          td
+            a(href='/patient/#{patient.id}#/episode/#{patient.episodeId}') #{patient.episode}
+
 block content
   h2 OpenEyes demonstrator dashboard
   .dashboard
@@ -11,42 +29,12 @@ block content
           .small-12.columns
             .sub-list-title Morning outpatients
               span.right 09:00 - 13:00
-            table(class='worklist', role='grid')
-              thead
-                td Time
-                td Patient name
-                td DOB
-                td Episode
-              each patient in dashboardData.today.morningOutpatients
-                tbody
-                  tr
-                    td #{patient.time}
-                    td
-                      a(href='/patient/#{patient.id}') #{patient.lastNames.toUpperCase()}
-                      |, #{patient.firstNames} (#{patient.gender})
-                    td #{patientUtils.formatDate(patient.dateOfBirth)}
-                    td
-                      a(href='/patient/#{patient.id}#/episode/#{patient.episodeId}') #{patient.episode}
+            +worklistTable(dashboardData.today.morningOutpatients)
         .row
           .small-12.columns
             .sub-list-title Afternoon surgery & discharges
               span.right 13:00 - 16:00
-            table(class='worklist', role='grid')
-              thead
-                td Time
-                td Patient name
-                td DOB
-                td Episode
-              each patient in dashboardData.today.afternoonSurgery
-                tbody
-                  tr
-                    td #{patient.time}
-                    td
-                      a(href='/patient/#{patient.id}') #{patient.lastNames.toUpperCase()}
-                      |, #{patient.firstNames} (#{patient.gender})
-                    td #{patientUtils.formatDate(patient.dateOfBirth)}
-                    td
-                      a(href='/patient/#{patient.id}#/episode/#{patient.episodeId}') #{patient.episode}
+            +worklistTable(dashboardData.today.afternoonSurgery)
       .small-5.columns.ae-requests
         h4.section-header A&E requests
         .row
@@ -74,21 +62,7 @@ block content
           .small-12.columns
             .sub-list-title Morning outpatients
               span.right 09:00 - 13:00
-            table(class='worklist')
-              thead
-                td Time
-                td Patient name
-                td DOB
-                td Episode
-              each patient in dashboardData.tomorrow.morningOutpatients
-                tbody
-                  tr
-                    td #{patient.time}
-                    td
-                      a(href='/patient/#{patient.id}') #{patient.lastNames.toUpperCase()}
-                      |, #{patient.firstNames} (#{patient.gender})
-                    td #{patientUtils.formatDate(patient.dateOfBirth)}
-                    td #{patient.episode}
+            +worklistTable(dashboardData.tomorrow.morningOutpatients)
       .small-5.columns
         h4.section-header External referrals
         .row

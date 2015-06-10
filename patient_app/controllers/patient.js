@@ -64,6 +64,7 @@ angular.module('patientApp.patient', ['ngRoute'])
   } else {
     console.log('EpisodeCtrl: episodes found locally.');
     $scope.episode = patientService.getEpisodeById(episodeId);
+    $scope.prevEpisode = patientService.getPreviousEpisode(episodeId);
 
     $scope.stageList = workflowService.processWorkflow($scope.episode);
     $window.rawWorkflow = workflowService.rawWorkflow;

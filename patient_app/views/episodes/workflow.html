@@ -2,11 +2,11 @@
   <!-- stages -->
   <div ng-repeat="stage in stageList">
     <div class="row" ng-show="stage.isStart()">
-      <div class="small-10 columns">
+      <div class="small-6 columns">
         <div class="wf-start"></div>
       </div>
-      <div class="small-2 columns amend-btn">
-        <a class="small-text right" href="#/episode/{{episode.id}}/workflow">Amend</a>
+      <div class="small-6 columns amend-btn">
+        <a class="small-text right" href="#/episode/{{episode.id}}/workflow">Amend care pathway</a>
       </div>
     </div>
     <div class="row" ng-show="stage.isEnd()">

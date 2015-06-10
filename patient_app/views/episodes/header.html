@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="small-1 columns episode-nav">
+    <button ns-popover ns-popover-template="/patient_app/views/popovers/prevEpisode.html" ns-popover-trigger="mouseenter" ns-popover-timeout="0.3" ns-popover-placement="bottom" class="tiny button secondary prev">Previous episode</button>
+  </div>
+  <div class="small-10 columns">
+    <div class="row panel callout radius">
+      <div class="small-2 columns">
+        <strong>Episode:</strong> {{episode.subSpecialty}}
+      </div>
+      <div class="small-4 columns">
+        {{episode.startDate | date:'MMM dd, yyyy'}} -
+        <span ng-show="episode.endDate != ''">{{episode.endDate | date:'MMM dd, yyyy'}}</span>
+        <span ng-show="episode.endDate == ''"><em>outstanding</em></span>
+      </div>
+      <div class="small-2 columns">
+        <span class="static-label">Eye: </span>{{episode.eye}}
+      </div>
+      <div class="small-4 columns">
+        <span class="static-label">Diagnosis: </span>{{episode.diagnosis}}
+      </div>
+    </div>
+  </div>
+  <div class="small-1 columns episode-nav">
+    <div class="small-text last">No more recent episodes</div>
+  </div>
+</div>

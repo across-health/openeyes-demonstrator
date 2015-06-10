@@ -6,7 +6,7 @@ var copy = require('gulp-copy');
 var livereload = require('gulp-livereload');
 
 gulp.task('default', function() {
-  gulp.start('combine-global', 'combine-angular-patient', 'eyedraw', 'sass');
+  gulp.start('combine-global', 'combine-angular-patient', 'eyedraw', 'workflow-editor-js', 'sass');
 });
 
 gulp.task('combine-angular-patient', function() {
@@ -14,8 +14,11 @@ gulp.task('combine-angular-patient', function() {
       './bower_components/angular/angular.min.js',
       './bower_components/angular-route/angular-route.min.js',
       './bower_components/angular-foundation/mm-foundation-tpls.min.js',
+      './bower_components/nsPopover/src/nsPopover.js',
       './patient_app/app.js',
+      './patient_app/models/*.js',
       './patient_app/controllers/*.js',
+      './patient_app/directives/*.js',
       './patient_app/services/*.js'
     ])
     .pipe(concat('patient_app.js'))
@@ -27,7 +30,11 @@ gulp.task('combine-global', function() {
       './bower_components/jquery/dist/jquery.min.js',
       './bower_components/foundation/js/vendor/modernizr.js',
       './bower_components/foundation/js/foundation.min.js',
-      './bower_components/foundation/js/foundation/foundation.accordion.js'
+      './bower_components/foundation/js/foundation/foundation.accordion.js',
+      './bower_components/jquery-ui/ui/minified/jquery-ui.min.js',
+      './bower_components/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js',
+      './bower_components/jsPlumb/dist/js/jquery.jsPlumb-1.5.5-min.js',
+      './bower_components/mustache/mustache.min.js',
     ])
     .pipe(concat('script.js'))
     .pipe(gulp.dest('./public/javascripts'));
@@ -58,10 +65,17 @@ gulp.task('eyedraw-script', function(){
     .pipe(gulp.dest('./public/javascripts'));
 });
 
+gulp.task('workflow-editor-js', function(){
+  gulp.src(['./workflow-editor-js/*.js'])
+    .pipe(gulp.dest('./public/javascripts'));
+});
+
 gulp.task('sass', function () {
   gulp.src([
       './bower_components/foundation/scss/normalize.scss',
       './bower_components/foundation/scss/foundation.scss',
+      './bower_components/nsPopover/sass/ns-popover.scss',
+      './workflow-editor-js/workflow.css',
       './stylesheets/style.scss'
     ])
     .pipe(sass())

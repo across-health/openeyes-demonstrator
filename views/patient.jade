@@ -2,9 +2,19 @@ extends layout
 
 block content
   div(ng-app='patientApp')
-    h1 #{patient.lastNames.toUpperCase()},
-      | #{patient.firstNames}&nbsp;
-      small #{patientUtils.formatDate(patient.dateOfBirth)}
+    .row
+      .small-8.columns
+        h1 #{patient.lastNames.toUpperCase()},
+          | #{patient.firstNames} (#{patient.gender})&nbsp;
+          small #{patientUtils.formatDate(patient.dateOfBirth)}
+      .small-4.columns
+        .right.patient-ids
+          span.nhs-number
+            em
+              strong NHS&nbsp;
+            | #{patient.nhsNo}
+          br
+          | Hospital No. #{patient.hospitalNo}
     div(ng-view)
 block bottom_javascript
   script(src='/javascripts/patient_app.js', type='text/javascript')

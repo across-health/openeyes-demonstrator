@@ -1,0 +1,16 @@
+<div ng-show="event.consentForm">
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="panel">
+        <div class="row">
+          <div class="small-1 columns">
+            <strong>Signed</strong>
+          </div>
+          <div class="small-11 columns">
+            {{event.consentForm.signedDate | date:'MMM dd, yyyy'}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -20,17 +20,29 @@
     height: 50px;
   }
 
-  .MALE {
+  .M {
     width: 55px;
     height: 55px;
     background-color: lightblue;
   }
 
-  .FEMALE {
+  .F {
     width: 55px;
     height: 55px;
     background-color: lightpink;
   }
+}
+
+.nhs-number {
+  background-color: #107ebd;
+  color: #FFFFFF;
+  padding: 3px 8px;
+  border-radius: 3px;
+}
+
+.patient-ids {
+  margin-top: 10px;
+  text-align: right;
 }
 
 .border-right {
@@ -85,5 +97,132 @@ h4 {
   }
   &.last {
     margin-bottom: 10px;
+  }
+}
+
+.episode-nav {
+  height: 66px;
+  text-align: center;
+  button {
+    margin-top: 11px;
+  }
+  .first, .last {
+    margin-top: 15px;
+  }
+}
+
+.workflow {
+
+  .amend-btn {
+    margin-bottom: -14px;
+  }
+
+  .stage:hover {
+    cursor: pointer;
+  }
+
+  .stage-container {
+    line-height: initial;
+    margin-top: 3px;
+  }
+
+  .circle {
+    border: 5px solid #666666;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    z-index: 86;
+
+    -webkit-transition: background-color .5s ease-in-out;
+    -moz-transition: background-color .5s ease-in-out;
+    -o-transition: background-color .5s ease-in-out;
+    -ms-transition: background-color .5s ease-in-out;
+    transition: background-color .5s ease-in-out;
+
+    &.filled {
+      background-color: lightgreen;
+    }
+
+    &.past, &.not-started {
+      border-width: 4px;
+      width: 40px;
+      height: 40px;
+      margin-left: 10px;
+    }
+
+    &.complete {
+      border-width: 4px;
+      width: 40px;
+      height: 40px;
+      text-align: center;
+      font-size: 22px;
+      color: lightgreen;
+      margin-left: 10px;
+    }
+  }
+
+  .square {
+    width: 30px;
+    height: 30px;
+    border: 4px solid #999999;
+    margin-left: 15px;
+
+    &.complete {
+      text-align: center;
+      font-size: 15px;
+      color: lightgreen;
+    }
+  }
+
+  .selected-event {
+    background-color: #f2f2f2;
+    border-radius: 5px;
+  }
+
+  .selectable-event:hover {
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .not-started {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+    filter: alpha(opacity=30);
+    opacity: 0.3;
+  }
+
+  .wf-start, .wf-end {
+    height: 4px;
+    width: 40px;
+    background-color: black;
+    margin-left: 10px;
+  }
+
+  .connector {
+    height: 40px;
+    width: 4px;
+    background-color: black;
+    margin-left: 28px;
+    &.short {
+      height: 20px;
+    }
+    &.x-short {
+      height: 28px;
+    }
+    &.xx-short {
+      height: 10px;
+    }
+  }
+}
+
+.dashboard {
+  .worklist {
+    width: inherit;
+    .priority {
+      &.high {
+        color: red;
+        font-size: 18px;
+      }
+    }
   }
 }

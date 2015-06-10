@@ -6,7 +6,9 @@ angular.module('patientApp', [
   'patientApp.patient',
   'patientApp.patientService',
   'patientApp.dataService',
-  'mm.foundation'
+  'patientApp.workflowService',
+  'mm.foundation',
+  'nsPopover'
 ])
 
 .config(['$routeProvider', function($routeProvider) {

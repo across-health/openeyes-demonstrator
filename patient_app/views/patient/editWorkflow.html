@@ -1,0 +1,39 @@
+<div episode-header></div>
+<!-- You need to create three elements to house the toolbox (Add Stage + Save buttons), the workspace (where you draw the shapes) and the editor (a form for editing details about a shape) -->
+<!-- You will reference these below in the JavaScript -->
+<h4 class="section-header">Care pathway</h4>
+
+<div class="row">
+  <div class="small-3 columns">
+    <div class="toolbox" id="toolbox"></div>
+  </div>
+  <div class="small-9 columns">
+    <button ng-click="exit(true)">Return</button>
+  </div>
+</div>
+<div class="row">
+  <div class="small-8 columns">
+    <div class="workspace" id="workspace"></div>
+  </div>
+  <div class="small-4 columns">
+    <div class="editor" id="editor"></div>
+  </div>
+</div>
+
+<script src="/javascripts/workflow_templates.js" type="text/javascript"></script>
+<script src="/javascripts/workflow.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+  workspace.initialize({
+    workspace: $('#workspace'), // jQuery object for the HTML element that you want to be the workspace - the area where you draw the shapes.
+    editor: $('#editor'), // jQuery object for the HTML element that you want to be the editor - the area where a form gets rendered to set the name and description of a stage/transition.
+    toolbox: $('#toolbox'), // jQuery object for the HTML element that you want to be the workspace - the area where the 'Add Stage' and 'Save' buttons get rendered.
+    save: function(workflow_json) { // A callback function that is called when you click the 'Save' button in the toolbox. workflow_json is the full JSON of the workflow. `this` refers to the workspace object. `this.toJSON()` will return the workflow in JSON form (i.e. not a string). `this.stage_list` will return all the stages. `this.transition_list` will return all the transitions.
+      // Below is an example, you can put AJAX or something here to save it.
+      window.rawWorkflow = workflow_json;
+    }
+    , initial_data: window.rawWorkflow
+    // Alternatively - dont use initial_data and call workspace.fromJSON() passing to it the JSON you want to render as per the format above.
+  });
+});
+</script>

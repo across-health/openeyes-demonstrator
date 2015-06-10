@@ -1,0 +1,61 @@
+<div class="small-3 columns workflow">
+  <!-- stages -->
+  <div ng-repeat="stage in stageList">
+    <div class="row" ng-show="stage.isStart()">
+      <div class="small-10 columns">
+        <div class="wf-start"></div>
+      </div>
+      <div class="small-2 columns amend-btn">
+        <a class="small-text right" href="#/episode/{{episode.id}}/workflow">Amend</a>
+      </div>
+    </div>
+    <div class="row" ng-show="stage.isEnd()">
+      <div class="small-12 columns">
+        <div class="wf-end not-started"></div>
+      </div>
+    </div>
+    <div class="row" ng-show="stage.isMain()">
+      <div class="small-3 columns">
+        <div class="circle" ng-class="stage.status"><span ng-show="stage.isComplete()">&#10004;</span></div>
+      </div>
+      <div class="small-5 columns stage-container">
+        <span ns-popover ns-popover-template="/patient_app/views/popovers/stage.html" ns-popover-trigger="click" ns-popover-placement="top" class="stage" ng-class="stage.status">{{stage.name}}</span>
+      </div>
+      <div class="small-4 columns">
+        <span class="small-text">{{stage.date | date:'MMM dd, yyyy'}}</span>
+      </div>
+    </div>
+    <div class="row" ng-show="stage.isMain()">
+      <div class="small-12 columns">
+        <div class="connector" ng-class="stage.getFollowingConnectorClass()"></div>
+      </div>
+    </div>
+    <div class="row" ng-show="stage.isStart()">
+      <div class="small-3 columns">
+        <div class="connector short"></div>
+      </div>
+    </div>
+    <!-- events -->
+    <div ng-repeat="(eventId, event) in stage.events">
+      <div class="row selectable-event" ng-class="episode.workflowData.selectedStageId == stage.id && episode.workflowData.selectedEventId == eventId ? 'selected-event' : ''" ng-click="selectEvent(stage.id, eventId)">
+        <div class="small-3 columns">
+          <div class="connector x-short" ng-class="stage.status"></div>
+        </div>
+        <div class="small-5 columns" ng-class="stage.status">
+          <span class="label secondary">{{event.type}}</span>
+          <!-- <span popover="popover" popover-title="popover title" class="label secondary">{{event.type}}</span> -->
+        </div>
+        <div class="small-4 columns">
+          <span class="small-text">{{event.eventDate | date:'MMM dd, yyyy'}}</span>
+        </div>
+      </div>
+      <div class="row" ng-show="$last">
+        <div class="small-12 columns">
+          <div class="connector" ng-class="stage.getFollowingConnectorClass()"></div>
+        </div>
+      </div>
+    <!-- end events -->
+    </div>
+  <!-- end stages -->
+  </div>
+</div>

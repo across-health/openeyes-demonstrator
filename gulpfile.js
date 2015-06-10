@@ -35,6 +35,7 @@ gulp.task('combine-global', function() {
       './bower_components/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js',
       './bower_components/jsPlumb/dist/js/jquery.jsPlumb-1.5.5-min.js',
       './bower_components/mustache/mustache.min.js',
+      './assets/javascripts/*.js',
     ])
     .pipe(concat('script.js'))
     .pipe(gulp.dest('./public/javascripts'));
@@ -76,7 +77,7 @@ gulp.task('sass', function () {
       './bower_components/foundation/scss/foundation.scss',
       './bower_components/nsPopover/sass/ns-popover.scss',
       './workflow-editor-js/workflow.css',
-      './stylesheets/style.scss'
+      './assets/stylesheets/style.scss'
     ])
     .pipe(sass())
     .pipe(concat('style.css'))
@@ -86,6 +87,7 @@ gulp.task('sass', function () {
 
 gulp.task('watch', function() {
   livereload.listen();
-  gulp.watch('./stylesheets/*.scss', ['sass']);
+  gulp.watch('./assets/stylesheets/*.scss', ['sass']);
+  gulp.watch('./assets/javascripts/*.js', ['combine-global']);
   gulp.watch(['./patient_app/*.js', './patient_app/*/*.js'], ['combine-angular-patient']);
 });

@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  h2 OpenEyes dashboard
+  h2 OpenEyes demonstrator dashboard
   .dashboard
     .row
       .small-7.columns
@@ -19,9 +19,12 @@ block content
                 tbody
                   tr
                     td #{patient.time}
-                    td #{patient.lastNames.toUpperCase()}, #{patient.firstNames} (#{patient.gender})
+                    td
+                      a(href='/patient/#{patient.id}') #{patient.lastNames.toUpperCase()}
+                      |, #{patient.firstNames} (#{patient.gender})
                     td #{patientUtils.formatDate(patient.dateOfBirth)}
-                    td #{patient.episode}
+                    td
+                      a(href='/patient/#{patient.id}#/episode/#{patient.episodeId}') #{patient.episode}
       .small-5.columns
         h4.section-header A&E requests
         .row
@@ -37,7 +40,7 @@ block content
                   tr
                     td
                       span.priority.high &uarr;
-                      | 08:36am
+                      | 08:36
                     td #{patient.lastNames.toUpperCase()}, #{patient.firstNames} (#{patient.gender})
                     td #{patientUtils.formatDate(patient.dateOfBirth)}
                     td #{patient.location}
@@ -57,7 +60,9 @@ block content
                 tbody
                   tr
                     td #{patient.time}
-                    td #{patient.lastNames.toUpperCase()}, #{patient.firstNames} (#{patient.gender})
+                    td
+                      a(href='/patient/#{patient.id}') #{patient.lastNames.toUpperCase()}
+                      |, #{patient.firstNames} (#{patient.gender})
                     td #{patientUtils.formatDate(patient.dateOfBirth)}
                     td #{patient.episode}
       .small-5.columns

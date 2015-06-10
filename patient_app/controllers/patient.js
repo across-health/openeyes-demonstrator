@@ -102,6 +102,7 @@ angular.module('patientApp.patient', ['ngRoute'])
     $location.path('/');
   } else {
     $scope.episode = patientService.getEpisodeById(episodeId);
+    $scope.prevEpisode = patientService.getPreviousEpisode(episodeId);
     $scope.stageList = workflowService.processWorkflow($scope.episode);
   }
 

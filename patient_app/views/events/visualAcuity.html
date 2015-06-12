@@ -3,9 +3,10 @@
     <div class="row">
       <div class="small-6 columns">
         <div class="panel">
-          <div class="row" ng-repeat="(key, entry) in event.visualAcuity.left">
+          <div class="row" ng-repeat="(key, entry) in event.visualAcuity.entries">
             <div class="small-3 columns">
-              <select ng-model="entry.value">
+              <!-- {{entry.left_eye[0].notation[0].low_vision_score[0]['|value']}} -->
+              <select ng-model="entry.left_eye.value">
                 <option value="">--</option>
                 <option value="6/3">6/3</option>
                 <option value="6/4">6/4</option>
@@ -21,30 +22,31 @@
                 <option value="3/60">3/60</option>
                 <option value="2/60">2/60</option>
                 <option value="1/60">1/60</option>
-                <option value="CF">CF</option>
-                <option value="HM" >HM</option>
-                <option value="PL" >PL</option>
-                <option value="NPL" >NPL</option>
+                <option value="at0019::CF - Count fingers::4">CF</option>
+                <option value="at0018::HM - Hand movement::3">HM</option>
+                <option value="at0017::PL -  Perception of light::2">PL</option>
+                <option value="NPL">NPL</option>
               </select>
             </div>
             <div class="small-6 columns">
               <select ng-model="entry.method">
                 <option value="">--</option>
-                <option value="Unaided">Unaided</option>
-                <option value="Glasses">Glasses</option>
+                <option value="at0139::Unaided visual acuity">Unaided</option>
+                <option value="at0137::Best corrected visual acuity">Best corrected</option>
+                <!-- <option value="Glasses">Glasses</option>
                 <option value="Contact lens">Contact lens</option>
                 <option value="Pinhole">Pinhole</option>
                 <option value="Auto-refraction">Auto-refraction</option>
-                <option value="Formal refraction">Formal refraction</option>
+                <option value="Formal refraction">Formal refraction</option> -->
               </select>
             </div>
             <div class="small-3 columns">
-              <a href="" ng-click="removeEntry('left', key)">Remove</a>
+              <a href="" ng-click="removeEntry(key)">Remove</a>
             </div>
           </div>
           <div class="row">
             <div class="small-12 columns">
-              <button class="button small" ng-click="addEntry('left')">Add</button>
+              <button class="button small" ng-click="addEntry()">Add</button>
             </div>
           </div>
           <div class="row">
@@ -56,9 +58,9 @@
       </div>
       <div class="small-6 columns">
         <div class="panel">
-          <div class="row" ng-repeat="(key, entry) in event.visualAcuity.right">
+          <div class="row" ng-repeat="(key, entry) in event.visualAcuity.entries">
             <div class="small-3 columns">
-              <select ng-model="entry.value">
+              <select ng-model="entry.right_eye.value">
                 <option value="">--</option>
                 <option value="6/3">6/3</option>
                 <option value="6/4">6/4</option>
@@ -74,30 +76,31 @@
                 <option value="3/60">3/60</option>
                 <option value="2/60">2/60</option>
                 <option value="1/60">1/60</option>
-                <option value="CF">CF</option>
-                <option value="HM" >HM</option>
-                <option value="PL" >PL</option>
-                <option value="NPL" >NPL</option>
+                <option value="at0019::CF - Count fingers::4">CF</option>
+                <option value="at0018::HM - Hand movement::3">HM</option>
+                <option value="at0017::PL -  Perception of light::2">PL</option>
+                <option value="NPL">NPL</option>
               </select>
             </div>
             <div class="small-6 columns">
               <select ng-model="entry.method">
                 <option value="">--</option>
-                <option value="Unaided">Unaided</option>
-                <option value="Glasses">Glasses</option>
+                <option value="at0139::Unaided visual acuity">Unaided</option>
+                <option value="at0137::Best corrected visual acuity">Best corrected</option>
+                <!-- <option value="Glasses">Glasses</option>
                 <option value="Contact lens">Contact lens</option>
                 <option value="Pinhole">Pinhole</option>
                 <option value="Auto-refraction">Auto-refraction</option>
-                <option value="Formal refraction">Formal refraction</option>
+                <option value="Formal refraction">Formal refraction</option> -->
               </select>
             </div>
             <div class="small-3 columns">
-              <a href="" ng-click="removeEntry('right', key)">Remove</a>
+              <a href="" ng-click="removeEntry(key)">Remove</a>
             </div>
           </div>
           <div class="row">
             <div class="small-12 columns">
-              <button class="button small" ng-click="addEntry('right')">Add</button>
+              <button class="button small" ng-click="addEntry()">Add</button>
             </div>
           </div>
           <div class="row">

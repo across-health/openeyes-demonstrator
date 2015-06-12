@@ -71,16 +71,27 @@ angular.module('patientApp.patient', ['ngRoute'])
     $scope.selectEvent($scope.episode.workflowData.selectedStageId, $scope.episode.workflowData.selectedEventId);
   }
 
-  $scope.removeEntry = function(eye, entryId) {
+  $scope.removeEntry = function(entryId) {
     var stageId = $scope.episode.workflowData.selectedStageId;
     var eventId = $scope.episode.workflowData.selectedEventId;
-    $scope.episode.workflowData[stageId].events[eventId].visualAcuity[eye].splice(entryId, 1);
+    $scope.episode.workflowData[stageId].events[eventId].visualAcuity.entries.splice(entryId, 1);
   };
 
-  $scope.addEntry = function(eye) {
+  $scope.addEntry = function() {
     var stageId = $scope.episode.workflowData.selectedStageId;
     var eventId = $scope.episode.workflowData.selectedEventId;
-    $scope.episode.workflowData[stageId].events[eventId].visualAcuity[eye].push({"value": "", "method": ""});
+    var newEntry = {
+      "entry": {
+        "method": "",
+        "left_eye": {
+          "value": ""
+        },
+        "right_eye": {
+          "value": ""
+        },
+      }
+    };
+    $scope.episode.workflowData[stageId].events[eventId].visualAcuity.entries.push(newEntry);
   };
 
   $scope.addEvent = function(stage, type) {

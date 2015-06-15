@@ -5,7 +5,6 @@
         <div class="panel">
           <div class="row" ng-repeat="(key, entry) in event.visualAcuity.entries">
             <div class="small-3 columns">
-              <!-- {{entry.left_eye[0].notation[0].low_vision_score[0]['|value']}} -->
               <select ng-model="entry.left_eye.value">
                 <option value="">--</option>
                 <option value="6/3">6/3</option>
@@ -47,6 +46,7 @@
           <div class="row">
             <div class="small-12 columns">
               <button class="button small" ng-click="addEntry()">Add</button>
+              <button class="button small" ng-click="saveVisualAcuity()">Save</button>
             </div>
           </div>
           <div class="row">

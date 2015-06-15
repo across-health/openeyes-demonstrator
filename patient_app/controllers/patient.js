@@ -47,9 +47,9 @@ angular.module('patientApp.patient', ['ngRoute'])
 
   // get episode
   var episodeId = $routeParams.id;
+  var patientId = $location.absUrl().match('[0-9]+#')[0].replace('#', '');
   if (patientService.getEpisodes().length == 0) {
     console.log('EpisodeCtrl: no episodes found locally.');
-    var patientId = $location.absUrl().match('[0-9]+#')[0].replace('#', '');
     dataService.getEpisodes(patientId)
       .success(function(data) {
         patientService.storeEpisodes(data.episodes);
@@ -102,6 +102,10 @@ angular.module('patientApp.patient', ['ngRoute'])
         "type": type
       };
     }
+  };
+
+  $scope.saveVisualAcuity = function() {
+    dataService.postVisualAcuity(patientId, $scope.event.visualAcuity);
   };
 
 }])

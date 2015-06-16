@@ -15,7 +15,6 @@ var committerName = 'ACROSS';
 var postFormat = 'FLAT';
 var compositionEndpoint = 'composition/';
 var queryEndpoint = 'query/';
-var compositionId = '49f085f8-fa4f-4d5c-a2f2-f62a1f0af4ab::across.c4h.ehrscape.com::1';
 var getFormat = 'STRUCTURED';
 var basicAuth = 'Basic YzRoX2Fjcm9zczpDQUJFUk1BbA==';
 
@@ -80,9 +79,7 @@ function getLatestVisualAcuityCompositionId(callback) {
   }
   function requestCallback(error, response, body) {
     if (!error && response.statusCode == 200) {
-      console.log('old composition id = ' + compositionId);
-      compositionId = JSON.parse(body).resultSet[0].uid_value;
-      console.log('new composition id = ' + compositionId);
+      var compositionId = JSON.parse(body).resultSet[0].uid_value;
       callback(compositionId);
     }
   }
@@ -115,12 +112,24 @@ function translateVisualAcuityForSave(visualAcuity) {
     var left_eye = visualAcuity.entries[i].left_eye.value.split('::');
     var right_eye = visualAcuity.entries[i].right_eye.value.split('::');
     processed[base+'/test_name|code'] = method[0];
-    processed[base+'/left_eye/notation/low_vision_score|code'] = left_eye[0];
-    processed[base+'/left_eye/notation/low_vision_score|value'] = left_eye[1];
-    processed[base+'/left_eye/notation/low_vision_score|ordinal'] = left_eye[2];
-    processed[base+'/right_eye/notation/low_vision_score|code'] = right_eye[0];
-    processed[base+'/right_eye/notation/low_vision_score|value'] = right_eye[1];
-    processed[base+'/right_eye/notation/low_vision_score|ordinal'] = right_eye[2];
+    if (left_eye[0] == 'LVS') {
+      processed[base+'/left_eye/notation/low_vision_score|code'] = left_eye[1];
+      processed[base+'/left_eye/notation/low_vision_score|value'] = left_eye[2];
+      processed[base+'/left_eye/notation/low_vision_score|ordinal'] = left_eye[3];
+    }
+    if (left_eye[0] == 'MS') {
+      processed[base+'/left_eye/notation/metric_snellen|numerator'] = left_eye[1];
+      processed[base+'/left_eye/notation/metric_snellen|denominator'] = left_eye[2];
+    }
+    if (right_eye[0] == 'LVS') {
+      processed[base+'/right_eye/notation/low_vision_score|code'] = right_eye[1];
+      processed[base+'/right_eye/notation/low_vision_score|value'] = right_eye[2];
+      processed[base+'/right_eye/notation/low_vision_score|ordinal'] = right_eye[3];
+    }
+    if (right_eye[0] == 'MS') {
+      processed[base+'/right_eye/notation/metric_snellen|numerator'] = right_eye[1];
+      processed[base+'/right_eye/notation/metric_snellen|denominator'] = right_eye[2];
+    }
   }
   return processed;
 }
@@ -131,10 +140,26 @@ function translateVisualAcuityForUI(rawVisualAcuity) {
   for (var i=0; i<vaEvents.length; i++) {
     var entry = {};
     entry['method'] = vaEvents[i].test_name[0]['|code'] + '::' + vaEvents[i].test_name[0]['|value']
-    var l = vaEvents[i].left_eye[0].notation[0].low_vision_score[0];
-    var r = vaEvents[i].right_eye[0].notation[0].low_vision_score[0];
-    entry['left_eye'] = { "value": l['|code'] + '::' + l['|value'] + '::' + l['|ordinal'] };
-    entry['right_eye'] = { "value": r['|code'] + '::' + r['|value'] + '::' + r['|ordinal'] };
+    var lLvs = vaEvents[i].left_eye[0].notation[0].low_vision_score;
+    var lMs = vaEvents[i].left_eye[0].notation[0].metric_snellen;
+    var rLvs = vaEvents[i].right_eye[0].notation[0].low_vision_score;
+    var rMs = vaEvents[i].right_eye[0].notation[0].metric_snellen;
+    if (lLvs != undefined) {
+      l = lLvs[0];
+      entry['left_eye'] = { "value": 'LVS::' + l['|code'] + '::' + l['|value'] + '::' + l['|ordinal'] };
+    }
+    if (lMs != undefined) {
+      l = lMs[0];
+      entry['left_eye'] = { "value": 'MS::' + l['|numerator'] + '::' + l['|denominator'] };
+    }
+    if (rLvs != undefined) {
+      r = rLvs[0];
+      entry['right_eye'] = { "value": 'LVS::' + r['|code'] + '::' + r['|value'] + '::' + r['|ordinal'] };
+    }
+    if (rMs != undefined) {
+      r = rMs[0];
+      entry['right_eye'] = { "value": 'MS::' + r['|numerator'] + '::' + r['|denominator'] };
+    }
     processedEntries.push(entry); 
   }
   return { "entries": processedEntries }

@@ -7,24 +7,24 @@
             <div class="small-3 columns">
               <select ng-model="entry.left_eye.value">
                 <option value="">--</option>
-                <option value="6/3">6/3</option>
-                <option value="6/4">6/4</option>
-                <option value="6/5">6/5</option>
-                <option value="6/6">6/6</option>
-                <option value="6/9">6/9</option>
-                <option value="6/12">6/12</option>
-                <option value="6/18">6/18</option>
-                <option value="6/24">6/24</option>
-                <option value="6/36">6/36</option>
-                <option value="6/60">6/60</option>
-                <option value="6/96">6/96</option>
-                <option value="3/60">3/60</option>
-                <option value="2/60">2/60</option>
-                <option value="1/60">1/60</option>
-                <option value="at0019::CF - Count fingers::4">CF</option>
-                <option value="at0018::HM - Hand movement::3">HM</option>
-                <option value="at0017::PL -  Perception of light::2">PL</option>
-                <option value="NPL">NPL</option>
+                <option value="MS::6::3">6/3</option>
+                <option value="MS::6::4">6/4</option>
+                <option value="MS::6::5">6/5</option>
+                <option value="MS::6::6">6/6</option>
+                <option value="MS::6::9">6/9</option>
+                <option value="MS::6::12">6/12</option>
+                <option value="MS::6::18">6/18</option>
+                <option value="MS::6::24">6/24</option>
+                <option value="MS::6::36">6/36</option>
+                <option value="MS::6::60">6/60</option>
+                <option value="MS::6::96">6/96</option>
+                <option value="MS::3::60">3/60</option>
+                <option value="MS::2::60">2/60</option>
+                <option value="MS::1::60">1/60</option>
+                <option value="LVS::at0019::CF - Count fingers::4">CF</option>
+                <option value="LVS::at0018::HM - Hand movement::3">HM</option>
+                <option value="LVS::at0017::PL -  Perception of light::2">PL</option>
+                <option value="LVS::at0016::NPL - No perception of light::1">NPL</option>
               </select>
             </div>
             <div class="small-6 columns">
@@ -62,24 +62,24 @@
             <div class="small-3 columns">
               <select ng-model="entry.right_eye.value">
                 <option value="">--</option>
-                <option value="6/3">6/3</option>
-                <option value="6/4">6/4</option>
-                <option value="6/5">6/5</option>
-                <option value="6/6">6/6</option>
-                <option value="6/9">6/9</option>
-                <option value="6/12">6/12</option>
-                <option value="6/18">6/18</option>
-                <option value="6/24">6/24</option>
-                <option value="6/36">6/36</option>
-                <option value="6/60">6/60</option>
-                <option value="6/96">6/96</option>
-                <option value="3/60">3/60</option>
-                <option value="2/60">2/60</option>
-                <option value="1/60">1/60</option>
-                <option value="at0019::CF - Count fingers::4">CF</option>
-                <option value="at0018::HM - Hand movement::3">HM</option>
-                <option value="at0017::PL -  Perception of light::2">PL</option>
-                <option value="NPL">NPL</option>
+                <option value="MS::6::3">6/3</option>
+                <option value="MS::6::4">6/4</option>
+                <option value="MS::6::5">6/5</option>
+                <option value="MS::6::6">6/6</option>
+                <option value="MS::6::9">6/9</option>
+                <option value="MS::6::12">6/12</option>
+                <option value="MS::6::18">6/18</option>
+                <option value="MS::6::24">6/24</option>
+                <option value="MS::6::36">6/36</option>
+                <option value="MS::6::60">6/60</option>
+                <option value="MS::6::96">6/96</option>
+                <option value="MS::3::60">3/60</option>
+                <option value="MS::2::60">2/60</option>
+                <option value="MS::1::60">1/60</option>
+                <option value="LVS::at0019::CF - Count fingers::4">CF</option>
+                <option value="LVS::at0018::HM - Hand movement::3">HM</option>
+                <option value="LVS::at0017::PL -  Perception of light::2">PL</option>
+                <option value="LVS::at0016::NPL - No perception of light::1">NPL</option>
               </select>
             </div>
             <div class="small-6 columns">
@@ -101,6 +101,7 @@
           <div class="row">
             <div class="small-12 columns">
               <button class="button small" ng-click="addEntry()">Add</button>
+              <button class="button small" ng-click="saveVisualAcuity()">{{visualAcuitySaveButtonLabel}}</button>
             </div>
           </div>
           <div class="row">

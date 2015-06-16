@@ -38,6 +38,8 @@ angular.module('patientApp.patient', ['ngRoute'])
 
 .controller('EpisodeCtrl', ['$scope', '$routeParams', '$location', '$window', 'patientService', 'dataService', 'workflowService', function($scope, $routeParams, $location, $window, patientService, dataService, workflowService) {
 
+  $scope.visualAcuitySaveButtonLabel = 'Save';
+
   $scope.selectEvent = function(stageId, eventId) {
     console.log('selecting event = ' + stageId + '/' + eventId);
     $scope.episode.workflowData.selectedStageId = stageId;
@@ -105,7 +107,10 @@ angular.module('patientApp.patient', ['ngRoute'])
   };
 
   $scope.saveVisualAcuity = function() {
-    dataService.postVisualAcuity(patientId, $scope.event.visualAcuity);
+    $scope.visualAcuitySaveButtonLabel = 'Saving...';
+    dataService.postVisualAcuity(patientId, $scope.event.visualAcuity).success(function(data) {
+      $scope.visualAcuitySaveButtonLabel = 'Save'
+    });
   };
 
 }])

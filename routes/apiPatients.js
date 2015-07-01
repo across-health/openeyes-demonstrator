@@ -2,15 +2,13 @@ var express = require('express');
 var request = require('request');
 var router = express.Router();
 
-var partiesResponse = require('../data/parties.json');
-var parties = partiesResponse.parties;
-
 var episodes = require('../data/episodes.json');
 
 router.get('/patient/:id', function(req, res) {
   var partyId = req.params.id
-  var patient = patientUtils.findByProperty(parties, "id", partyId);
-  res.json(patient);
+  patientUtils.getPatientByPartyId(partyId, function(data) {
+    res.json(data.party);
+  });
 });
 
 router.get('/patient/:id/episodes', function(req, res) {

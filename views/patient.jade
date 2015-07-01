@@ -12,7 +12,7 @@ block content
           span.nhs-number
             em
               strong NHS&nbsp;
-            | #{patient.getNhsNo()}
+            | #{patient.getAdditionalInfo('uk.nhs.nhsnumber')}
           br
           | Hospital No. #{patient.data.hospitalNo}
     div(ng-view)

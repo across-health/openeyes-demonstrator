@@ -7,17 +7,6 @@ var parties = partiesResponse.parties;
 
 var episodes = require('../data/episodes.json');
 
-// ehrScape details
-var ehrscapeBaseUrl = 'https://rest.ehrscape.com/rest/v1/';
-var ehrId = 'f3da219d-4ca6-461f-a9ea-a1ad5df069e9';
-var templateId = 'Across - Visual Acuity Report';
-var committerName = 'ACROSS';
-var postFormat = 'FLAT';
-var compositionEndpoint = 'composition/';
-var queryEndpoint = 'query/';
-var getFormat = 'STRUCTURED';
-var basicAuth = 'Basic YzRoX2Fjcm9zczpDQUJFUk1BbA==';
-
 router.get('/patient/:id', function(req, res) {
   var partyId = req.params.id
   var patient = patientUtils.findByProperty(parties, "id", partyId);
@@ -40,10 +29,10 @@ router.post('/patient/:id/visual-acuity', function(req, res) {
 
 function postVisualAcuityComposition(visualAcuity, callback) {
   var options = {
-    url: ehrscapeBaseUrl + compositionEndpoint + '?ehrId=' + ehrId + '&templateId=' + templateId + '&committerName=' + committerName + '&format=' + postFormat,
+    url: ehrscapeUtils.ehrscapeBaseUrl + ehrscapeUtils.compositionEndpoint + '?ehrId=' + ehrscapeUtils.ehrId + '&templateId=' + ehrscapeUtils.templateId + '&committerName=' + ehrscapeUtils.committerName + '&format=' + ehrscapeUtils.postFormat,
     method: 'post',
     headers: {
-      'Authorization': basicAuth,
+      'Authorization': ehrscapeUtils.basicAuth,
     },
     body: translateVisualAcuityForSave(visualAcuity),
     json: true
@@ -56,9 +45,9 @@ function postVisualAcuityComposition(visualAcuity, callback) {
 
 function getVisualAcuityComposition(compositionId, callback) {
   var options = {
-    url: ehrscapeBaseUrl + compositionEndpoint + compositionId + '?format=' + getFormat,
+    url: ehrscapeUtils.ehrscapeBaseUrl + ehrscapeUtils.compositionEndpoint + compositionId + '?format=' + ehrscapeUtils.getFormat,
     headers: {
-      'Authorization': basicAuth
+      'Authorization': ehrscapeUtils.basicAuth
     }
   };
   function requestCallback(error, response, body) {
@@ -66,23 +55,23 @@ function getVisualAcuityComposition(compositionId, callback) {
       episodes.episodes[1].workflowData['stage527901'].events['event3'].visualAcuity = translateVisualAcuityForUI(JSON.parse(body));
       callback();
     }
-  }
+  };
   return request(options, requestCallback);
 };
 
 function getLatestVisualAcuityCompositionId(callback) {
   var options = {
-    url: ehrscapeBaseUrl + queryEndpoint + "?aql=select a/uid/value as uid_value, a/context/start_time/value as context_start_time from EHR e[ehr_id/value='" + ehrId + "'] contains COMPOSITION a[openEHR-EHR-COMPOSITION.report.v1] where a/name/value= 'Visual Acuity Report' order by a/context/start_time/value desc offset 0 limit 1",
+    url: ehrscapeUtils.ehrscapeBaseUrl + ehrscapeUtils.queryEndpoint + "?aql=select a/uid/value as uid_value, a/context/start_time/value as context_start_time from EHR e[ehr_id/value='" + ehrscapeUtils.ehrId + "'] contains COMPOSITION a[openEHR-EHR-COMPOSITION.report.v1] where a/name/value= 'Visual Acuity Report' order by a/context/start_time/value desc offset 0 limit 1",
     headers: {
-      'Authorization': basicAuth
+      'Authorization': ehrscapeUtils.basicAuth
     }
-  }
+  };
   function requestCallback(error, response, body) {
     if (!error && response.statusCode == 200) {
       var compositionId = JSON.parse(body).resultSet[0].uid_value;
       callback(compositionId);
     }
-  }
+  };
   return request(options, requestCallback);
 };
 

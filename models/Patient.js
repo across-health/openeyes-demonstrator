@@ -6,13 +6,13 @@ var Patient = function(data) {
 
 Patient.prototype.data = {}
 
-Patient.prototype.getNhsNo = function() {
+Patient.prototype.getAdditionalInfo = function(key) {
   for (var i=0; i<this.data.partyAdditionalInfo.length; i++) {
-    if (this.data.partyAdditionalInfo[i].key === 'uk.nhs.nhsnumber') {
+    if (this.data.partyAdditionalInfo[i].key === key) {
       return this.data.partyAdditionalInfo[i].value;
     }
   }
-  return 'not found';
+  return '';
 }
 
 module.exports = Patient;

@@ -8,7 +8,8 @@ ehrscapeUtils = {
   postFormat: 'FLAT',
   compositionEndpoint: 'composition/',
   queryEndpoint: 'query/',
+  demographicEndpoint: 'demographics/',
   getFormat: 'STRUCTURED',
-  basicAuth: 'Basic YzRoX2Fjcm9zczpDQUJFUk1BbA==',
+  basicAuth: 'Basic YzRoX2Fjcm9zczpDQUJFUk1BbA=='
 
 };

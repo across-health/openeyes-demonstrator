@@ -4,17 +4,17 @@ block content
   div(ng-app='patientApp')
     .row
       .small-8.columns
-        h1 #{patient.lastNames.toUpperCase()},
-          | #{patient.firstNames} (#{patient.gender})&nbsp;
-          small #{patientUtils.formatDate(patient.dateOfBirth)}
+        h1 #{patient.data.lastNames.toUpperCase()},
+          | #{patient.data.firstNames} (#{patient.data.gender})&nbsp;
+          small #{patientUtils.formatDate(patient.data.dateOfBirth)}
       .small-4.columns
         .right.patient-ids
           span.nhs-number
             em
               strong NHS&nbsp;
-            | #{patient.nhsNo}
+            | #{patient.getNhsNo()}
           br
-          | Hospital No. #{patient.hospitalNo}
+          | Hospital No. #{patient.data.hospitalNo}
     div(ng-view)
 block bottom_javascript
   script(src='/javascripts/patient_app.js', type='text/javascript')

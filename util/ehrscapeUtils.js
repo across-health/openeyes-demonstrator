@@ -9,7 +9,9 @@ ehrscapeUtils = {
   compositionEndpoint: 'composition/',
   queryEndpoint: 'query/',
   demographicEndpoint: 'demographics/',
+  ehrEndpoint: 'ehr/',
   getFormat: 'STRUCTURED',
-  basicAuth: 'Basic YzRoX2Fjcm9zczpDQUJFUk1BbA=='
+  basicAuth: 'Basic YzRoX2Fjcm9zczpDQUJFUk1BbA==',
+  subjectNamespace: 'uk.nhs.nhsnumber'
 
 };

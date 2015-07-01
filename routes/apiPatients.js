@@ -12,11 +12,15 @@ router.get('/patient/:id', function(req, res) {
 });
 
 router.get('/patient/:id/episodes', function(req, res) {
-  getLatestVisualAcuityCompositionId(function(compositionId) {
-    getVisualAcuityComposition(compositionId, function() {
-      res.json(episodes);
+  var partyId = req.params.id;
+  getEhrIdBySubjectId(partyId, function(ehrId) {
+    getLatestVisualAcuityCompositionId(ehrId, function(compositionId) {
+      getVisualAcuityComposition(compositionId, function() {
+        res.json(episodes);
+      });
     });
   });
+
 });
 
 router.post('/patient/:id/visual-acuity', function(req, res) {
@@ -24,6 +28,20 @@ router.post('/patient/:id/visual-acuity', function(req, res) {
     res.json(body);
   });
 });
+
+function getEhrIdBySubjectId(subjectId, callback) {
+  var options = {
+    url: ehrscapeUtils.ehrscapeBaseUrl + ehrscapeUtils.ehrEndpoint + '?subjectId=' + subjectId + '&subjectNamespace=' + ehrscapeUtils.subjectNamespace,
+    headers: {
+      'Authorization': ehrscapeUtils.basicAuth,
+    },
+  };
+  function requestCallback(error, response, body) {
+    ehr = JSON.parse(body);
+    callback(ehr.ehrId);
+  }
+  return request(options, requestCallback);
+};
 
 function postVisualAcuityComposition(visualAcuity, callback) {
   var options = {
@@ -39,7 +57,7 @@ function postVisualAcuityComposition(visualAcuity, callback) {
     callback(body);
   }
   return request(options, requestCallback);
-}
+};
 
 function getVisualAcuityComposition(compositionId, callback) {
   var options = {
@@ -57,9 +75,9 @@ function getVisualAcuityComposition(compositionId, callback) {
   return request(options, requestCallback);
 };
 
-function getLatestVisualAcuityCompositionId(callback) {
+function getLatestVisualAcuityCompositionId(ehrId, callback) {
   var options = {
-    url: ehrscapeUtils.ehrscapeBaseUrl + ehrscapeUtils.queryEndpoint + "?aql=select a/uid/value as uid_value, a/context/start_time/value as context_start_time from EHR e[ehr_id/value='" + ehrscapeUtils.ehrId + "'] contains COMPOSITION a[openEHR-EHR-COMPOSITION.report.v1] where a/name/value= 'Visual Acuity Report' order by a/context/start_time/value desc offset 0 limit 1",
+    url: ehrscapeUtils.ehrscapeBaseUrl + ehrscapeUtils.queryEndpoint + "?aql=select a/uid/value as uid_value, a/context/start_time/value as context_start_time from EHR e[ehr_id/value='" + ehrId + "'] contains COMPOSITION a[openEHR-EHR-COMPOSITION.report.v1] where a/name/value= 'Visual Acuity Report' order by a/context/start_time/value desc offset 0 limit 1",
     headers: {
       'Authorization': ehrscapeUtils.basicAuth
     }

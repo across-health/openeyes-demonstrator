@@ -38,6 +38,8 @@ angular.module('patientApp.patient', ['ngRoute'])
 
 .controller('EpisodeCtrl', ['$scope', '$routeParams', '$location', '$window', 'patientService', 'dataService', 'workflowService', function($scope, $routeParams, $location, $window, patientService, dataService, workflowService) {
 
+  $scope.visualAcuitySaveButtonLabel = 'Save';
+
   $scope.selectEvent = function(stageId, eventId) {
     console.log('selecting event = ' + stageId + '/' + eventId);
     $scope.episode.workflowData.selectedStageId = stageId;
@@ -47,9 +49,9 @@ angular.module('patientApp.patient', ['ngRoute'])
 
   // get episode
   var episodeId = $routeParams.id;
+  var patientId = $location.absUrl().match('[0-9]+#')[0].replace('#', '');
   if (patientService.getEpisodes().length == 0) {
     console.log('EpisodeCtrl: no episodes found locally.');
-    var patientId = $location.absUrl().match('[0-9]+#')[0].replace('#', '');
     dataService.getEpisodes(patientId)
       .success(function(data) {
         patientService.storeEpisodes(data.episodes);
@@ -71,16 +73,27 @@ angular.module('patientApp.patient', ['ngRoute'])
     $scope.selectEvent($scope.episode.workflowData.selectedStageId, $scope.episode.workflowData.selectedEventId);
   }
 
-  $scope.removeEntry = function(eye, entryId) {
+  $scope.removeEntry = function(entryId) {
     var stageId = $scope.episode.workflowData.selectedStageId;
     var eventId = $scope.episode.workflowData.selectedEventId;
-    $scope.episode.workflowData[stageId].events[eventId].visualAcuity[eye].splice(entryId, 1);
+    $scope.episode.workflowData[stageId].events[eventId].visualAcuity.entries.splice(entryId, 1);
   };
 
-  $scope.addEntry = function(eye) {
+  $scope.addEntry = function() {
     var stageId = $scope.episode.workflowData.selectedStageId;
     var eventId = $scope.episode.workflowData.selectedEventId;
-    $scope.episode.workflowData[stageId].events[eventId].visualAcuity[eye].push({"value": "", "method": ""});
+    var newEntry = {
+      "entry": {
+        "method": "",
+        "left_eye": {
+          "value": ""
+        },
+        "right_eye": {
+          "value": ""
+        },
+      }
+    };
+    $scope.episode.workflowData[stageId].events[eventId].visualAcuity.entries.push(newEntry);
   };
 
   $scope.addEvent = function(stage, type) {
@@ -91,6 +104,13 @@ angular.module('patientApp.patient', ['ngRoute'])
         "type": type
       };
     }
+  };
+
+  $scope.saveVisualAcuity = function() {
+    $scope.visualAcuitySaveButtonLabel = 'Saving...';
+    dataService.postVisualAcuity(patientId, $scope.event.visualAcuity).success(function(data) {
+      $scope.visualAcuitySaveButtonLabel = 'Save'
+    });
   };
 
 }])

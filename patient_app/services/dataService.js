@@ -12,6 +12,10 @@ angular.module('patientApp.dataService', [])
     getEpisodes: function(patientId) {
       console.log('dataService.getEpisodes');
       return $http.get('/api/patient/'+patientId+'/episodes');
+    },
+    postVisualAcuity: function(patientId, visualAcuity) {
+      console.log('dataService.postVisualAcuity');
+      return $http.post('/api/patient/'+patientId+'/visual-acuity', visualAcuity);
     }
   };
 

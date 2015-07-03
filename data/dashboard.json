@@ -2,30 +2,30 @@
   "today": {
     "morningOutpatients": [
       {
-        "id": "746",
-        "firstNames": "Medsreca",
-        "lastNames": "Wurst",
-        "gender": "F",
+        "id": "67080",
+        "firstNames": "Harriet",
+        "lastNames": "Hill",
+        "gender": "FEMALE",
         "dateOfBirth": "1990-03-09T00:00:00.000Z",
         "time": "09:00",
         "episode": "Cataract",
         "episodeId": 2
       },
       {
-        "id": "689",
-        "firstNames": "Nichole",
-        "lastNames": "Barlow",
-        "gender": "F",
+        "id": "67077",
+        "firstNames": "Dave",
+        "lastNames": "Thompson",
+        "gender": "MALE",
         "dateOfBirth": "1989-10-01T21:25:44.000Z",
         "time": "10:30",
         "episode": "Glaucoma",
         "episodeId": 2
       },
       {
-        "id": "66391",
-        "firstNames": "Jonny",
-        "lastNames": "Hill",
-        "gender": "M",
+        "id": "66432",
+        "firstNames": "Steve",
+        "lastNames": "Walford",
+        "gender": "MALE",
         "dateOfBirth": "1990-03-09T00:00:00.000Z",
         "time": "11:00",
         "episode": "Cataract",
@@ -34,21 +34,11 @@
     ],
     "afternoonSurgery": [
       {
-        "id": "677",
-        "firstNames": "Kylee",
-        "lastNames": "Bowers",
-        "gender": "F",
-      "dateOfBirth": "1950-10-01T19:17:22.000Z",
-        "time": "13:30",
-        "episode": "Glaucoma",
-        "episodeId": 2
-      },
-      {
-        "id": "686",
-        "firstNames": "Magee",
-        "lastNames": "Wilcox",
-        "gender": "M",
-      "dateOfBirth": "1956-09-01T15:55:30.000Z",
+        "id": "67080",
+        "firstNames": "Harriet",
+        "lastNames": "Hill",
+        "gender": "FEMALE",
+        "dateOfBirth": "1990-03-09T00:00:00.000Z",
         "time": "15:00",
         "episode": "Cataract",
         "episodeId": 2
@@ -58,9 +48,9 @@
   "tomorrow": {
     "morningOutpatients": [
       {
-        "id": "746",
-        "firstNames": "Medsreca",
-        "lastNames": "Wurst",
+        "id": "67080",
+        "firstNames": "Harriet",
+        "lastNames": "Hill",
         "gender": "F",
         "dateOfBirth": "1990-03-09T00:00:00.000Z",
         "time": "09:00",
@@ -68,10 +58,10 @@
         "episodeId": 2
       },
       {
-        "id": "66391",
-        "firstNames": "Jonny",
-        "lastNames": "Hill",
-        "gender": "M",
+        "id": "66432",
+        "firstNames": "Steve",
+        "lastNames": "Walford",
+        "gender": "MALE",
         "dateOfBirth": "1990-03-09T00:00:00.000Z",
         "time": "12:00",
         "episode": "Glaucoma",
@@ -83,10 +73,10 @@
   ],
   "aAndERequests": [
     {
-      "id": "746",
-      "firstNames": "Medsreca",
-      "lastNames": "Wurst",
-      "gender": "F",
+      "id": "67080",
+      "firstNames": "Harriet",
+      "lastNames": "Hill",
+      "gender": "FEMALE",
       "dateOfBirth": "1990-03-09T00:00:00.000Z",
       "location": "St Thomas's"
     }

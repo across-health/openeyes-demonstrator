@@ -9,6 +9,7 @@ var routes = require('./routes/index');
 var patients = require('./routes/patients');
 var apiPatients = require('./routes/apiPatients');
 var patientUtils = require('./util/patientUtils.js');
+var ehrscapeUtils = require('./util/ehrscapeUtils.js');
 
 var app = express();
 

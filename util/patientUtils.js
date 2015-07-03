@@ -26,10 +26,12 @@ patientUtils = {
       }
     };
     function requestCallback(error, response, body) {
+      console.log(new Date() - start + 'ms', '| GET', options.url.substr(0, 100), '|');
       if (!error && response.statusCode == 200) {
         callback(JSON.parse(body));
       }
     }
+    var start = new Date();
     return request(options, requestCallback);
   },
 
@@ -41,10 +43,12 @@ patientUtils = {
       }
     };
     function requestCallback(error, response, body) {
+      console.log(new Date() - start + ' ms', '| GET', options.url.substr(0, 100), '|');
       if (!error && response.statusCode == 200) {
         callback(JSON.parse(body));
       }
     }
+    var start = new Date();
     return request(options, requestCallback);
   }
 

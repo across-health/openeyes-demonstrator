@@ -37,9 +37,11 @@ function getEhrIdBySubjectId(subjectId, callback) {
     },
   };
   function requestCallback(error, response, body) {
+    console.log(new Date() - start + 'ms', '| GET', options.url.substr(0, 100), '|');
     ehr = JSON.parse(body);
     callback(ehr.ehrId);
   }
+  var start = new Date();
   return request(options, requestCallback);
 };
 
@@ -54,8 +56,10 @@ function postVisualAcuityComposition(visualAcuity, callback) {
     json: true
   };
   function requestCallback(error, response, body) {
+    console.log(new Date() - start + 'ms', '| POST', options.url.substr(0, 100), '|');
     callback(body);
   }
+  var start = new Date();
   return request(options, requestCallback);
 };
 
@@ -67,11 +71,13 @@ function getVisualAcuityComposition(compositionId, callback) {
     }
   };
   function requestCallback(error, response, body) {
+    console.log(new Date() - start + 'ms', '| GET', options.url.substr(0, 100), '|');
     if (!error && response.statusCode == 200) {
       episodes.episodes[1].workflowData['stage527901'].events['event3'].visualAcuity = translateVisualAcuityForUI(JSON.parse(body));
       callback();
     }
   };
+  var start = new Date();
   return request(options, requestCallback);
 };
 
@@ -83,11 +89,13 @@ function getLatestVisualAcuityCompositionId(ehrId, callback) {
     }
   };
   function requestCallback(error, response, body) {
+    console.log(new Date() - start + 'ms', '| GET', options.url.substr(0, 100), '|');
     if (!error && response.statusCode == 200) {
       var compositionId = JSON.parse(body).resultSet[0].uid_value;
       callback(compositionId);
     }
   };
+  var start = new Date();
   return request(options, requestCallback);
 };
 

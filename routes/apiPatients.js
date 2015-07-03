@@ -24,8 +24,11 @@ router.get('/patient/:id/episodes', function(req, res) {
 });
 
 router.post('/patient/:id/visual-acuity', function(req, res) {
-  postVisualAcuityComposition(req.body, function(body) {
-    res.json(body);
+  var partyId = req.params.id;
+  getEhrIdBySubjectId(partyId, function(ehrId) {
+    postVisualAcuityComposition(ehrId, req.body, function(body) {
+      res.json(body);
+    });
   });
 });
 
@@ -37,7 +40,7 @@ function getEhrIdBySubjectId(subjectId, callback) {
     },
   };
   function requestCallback(error, response, body) {
-    console.log(new Date() - start + 'ms', '| GET', options.url.substr(0, 100), '|');
+    console.log(new Date() - start + ' ms', '| GET', options.url.substr(0, 100), '|');
     ehr = JSON.parse(body);
     callback(ehr.ehrId);
   }
@@ -45,9 +48,9 @@ function getEhrIdBySubjectId(subjectId, callback) {
   return request(options, requestCallback);
 };
 
-function postVisualAcuityComposition(visualAcuity, callback) {
+function postVisualAcuityComposition(ehrId, visualAcuity, callback) {
   var options = {
-    url: ehrscapeUtils.ehrscapeBaseUrl + ehrscapeUtils.compositionEndpoint + '?ehrId=' + ehrscapeUtils.ehrId + '&templateId=' + ehrscapeUtils.templateId + '&committerName=' + ehrscapeUtils.committerName + '&format=' + ehrscapeUtils.postFormat,
+    url: ehrscapeUtils.ehrscapeBaseUrl + ehrscapeUtils.compositionEndpoint + '?ehrId=' + ehrId + '&templateId=' + ehrscapeUtils.templateId + '&committerName=' + ehrscapeUtils.committerName + '&format=' + ehrscapeUtils.postFormat,
     method: 'post',
     headers: {
       'Authorization': ehrscapeUtils.basicAuth,
@@ -56,7 +59,7 @@ function postVisualAcuityComposition(visualAcuity, callback) {
     json: true
   };
   function requestCallback(error, response, body) {
-    console.log(new Date() - start + 'ms', '| POST', options.url.substr(0, 100), '|');
+    console.log(new Date() - start + ' ms', '| POST', options.url.substr(0, 100), '|');
     callback(body);
   }
   var start = new Date();
@@ -71,7 +74,7 @@ function getVisualAcuityComposition(compositionId, callback) {
     }
   };
   function requestCallback(error, response, body) {
-    console.log(new Date() - start + 'ms', '| GET', options.url.substr(0, 100), '|');
+    console.log(new Date() - start + ' ms', '| GET', options.url.substr(0, 100), '|');
     if (!error && response.statusCode == 200) {
       episodes.episodes[1].workflowData['stage527901'].events['event3'].visualAcuity = translateVisualAcuityForUI(JSON.parse(body));
       callback();
@@ -89,7 +92,7 @@ function getLatestVisualAcuityCompositionId(ehrId, callback) {
     }
   };
   function requestCallback(error, response, body) {
-    console.log(new Date() - start + 'ms', '| GET', options.url.substr(0, 100), '|');
+    console.log(new Date() - start + ' ms', '| GET', options.url.substr(0, 100), '|');
     if (!error && response.statusCode == 200) {
       var compositionId = JSON.parse(body).resultSet[0].uid_value;
       callback(compositionId);
@@ -100,7 +103,6 @@ function getLatestVisualAcuityCompositionId(ehrId, callback) {
 };
 
 function translateVisualAcuityForSave(visualAcuity) {
-  console.log(visualAcuity);
   var now = new Date();
   var processed = {
     "ctx/composer_name": "Dr Joyce Smith",
@@ -110,20 +112,15 @@ function translateVisualAcuityForSave(visualAcuity) {
     "ctx/id_scheme": "2.16.840.1.113883.2.1.4.3",
     "ctx/language": "en",
     "ctx/territory": "GB",
-    "ctx/time": now.toISOString(),
-    "visual_acuity_report/visual_acuity:0/any_event:0/left_eye/eye_examined|code": "at0012",
-    "visual_acuity_report/visual_acuity:0/any_event:0/right_eye/eye_examined|code": "at0013",
-    "visual_acuity_report/visual_acuity:0/any_event:1/test_name|code": "at0137",
-    "visual_acuity_report/visual_acuity:0/any_event:1/left_eye/eye_examined|code": "at0012",
-    "visual_acuity_report/visual_acuity:0/any_event:1/left_eye/interpretation:0": "Poor vision.",
-    "visual_acuity_report/visual_acuity:0/any_event:1/right_eye/eye_examined|code": "at0013",
-    "visual_acuity_report/visual_acuity:0/any_event:1/right_eye/interpretation:0": "Corrected vision in right eye pretty still pretty poor"
+    "ctx/time": now.toISOString()
   };
   for (var i=0; i<visualAcuity.entries.length; i++) {
     var base = "visual_acuity_report/visual_acuity:0/any_event:"+i;
     var method = visualAcuity.entries[i].method.split('::');
     var left_eye = visualAcuity.entries[i].left_eye.value.split('::');
     var right_eye = visualAcuity.entries[i].right_eye.value.split('::');
+    processed[base+'/left_eye/eye_examined|code'] = "at0012";
+    processed[base+'/right_eye/eye_examined|code'] = "at0013";
     processed[base+'/test_name|code'] = method[0];
     if (left_eye[0] == 'LVS') {
       processed[base+'/left_eye/notation/low_vision_score|code'] = left_eye[1];
@@ -153,6 +150,7 @@ function translateVisualAcuityForUI(rawVisualAcuity) {
   for (var i=0; i<vaEvents.length; i++) {
     var entry = {};
     entry['method'] = vaEvents[i].test_name[0]['|code'] + '::' + vaEvents[i].test_name[0]['|value']
+    console.log('i = ' + i);
     var lLvs = vaEvents[i].left_eye[0].notation[0].low_vision_score;
     var lMs = vaEvents[i].left_eye[0].notation[0].metric_snellen;
     var rLvs = vaEvents[i].right_eye[0].notation[0].low_vision_score;

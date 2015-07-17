@@ -8,7 +8,7 @@ install:
   - curl -sLo - http://j.mp/install-travis-docker | sh -xe
 
 script:
-  - ./run 'docker build -t openeyes-test . && docker run openeyes-test'
+  - ./run 'docker build -t openeyes-test .'
 
 deploy:
   provider: heroku

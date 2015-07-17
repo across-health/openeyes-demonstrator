@@ -1,6 +1,15 @@
 language: node_js
 node_js:
 - iojs-v1.8.1
+
+sudo: true
+
+install:
+  - curl -sLo - http://j.mp/install-travis-docker | sh -xe
+
+script:
+  - ./run 'docker build -t openeyes-test . && docker run openeyes-test'
+
 deploy:
   provider: heroku
   api_key:

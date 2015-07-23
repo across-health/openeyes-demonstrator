@@ -4,6 +4,9 @@
   "description": "OpenEyes demonstrator",
   "repository": "https://github.com/davet1985/openeyes-demonstrator",
   "private": false,
+  "engines": {
+    "iojs": "1.8.1"
+  },
   "scripts": {
     "postinstall": "bower install && gulp",
     "prestart": "npm install",
